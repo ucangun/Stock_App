@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
@@ -52,60 +52,74 @@ const Register = () => {
           isSubmitting,
         }) => (
           <Form>
-            <TextField
-              id="username"
-              name="username"
-              label="Username"
-              value={values.username}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.username && Boolean(errors.username)}
-              helperText={touched.username && errors.username}
-            />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 3,
+                alignItems: "center",
+              }}
+            >
+              <TextField
+                id="username"
+                name="username"
+                label="Username"
+                value={values.username}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.username && Boolean(errors.username)}
+                helperText={touched.username && errors.username}
+                sx={{ width: "30ch" }}
+              />
 
-            <TextField
-              id="firstName"
-              name="firstName"
-              label="First Name"
-              value={values.firstName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.firstName && Boolean(errors.firstName)}
-              helperText={touched.firstName && errors.firstName}
-            />
-            <TextField
-              id="lastName"
-              name="lastName"
-              label="Last Name"
-              value={values.lastName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.lastName && Boolean(errors.lastName)}
-              helperText={touched.lastName && errors.lastName}
-            />
-            <TextField
-              id="email"
-              name="email"
-              label="Email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.email && Boolean(errors.email)}
-              helperText={touched.email && errors.email}
-            />
-            <TextField
-              id="password"
-              name="password"
-              label="Password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.password && Boolean(errors.password)}
-              helperText={touched.password && errors.password}
-            />
-            <Button type="submit" variant="contained">
-              Sign Up
-            </Button>
+              <TextField
+                id="firstName"
+                name="firstName"
+                label="First Name"
+                value={values.firstName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.firstName && Boolean(errors.firstName)}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ width: "30ch" }}
+              />
+              <TextField
+                id="lastName"
+                name="lastName"
+                label="Last Name"
+                value={values.lastName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.lastName && Boolean(errors.lastName)}
+                helperText={touched.lastName && errors.lastName}
+                sx={{ width: "30ch" }}
+              />
+              <TextField
+                id="email"
+                name="email"
+                label="Email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+                sx={{ width: "30ch" }}
+              />
+              <TextField
+                id="password"
+                name="password"
+                label="Password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.password && Boolean(errors.password)}
+                helperText={touched.password && errors.password}
+                sx={{ width: "30ch" }}
+              />
+              <Button type="submit" variant="contained">
+                Sign Up
+              </Button>
+            </Box>
           </Form>
         )}
       </Formik>
