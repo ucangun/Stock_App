@@ -58,6 +58,7 @@ const Register = () => {
                 flexDirection: "column",
                 gap: 3,
                 alignItems: "center",
+                margin: 20,
               }}
             >
               <TextField
