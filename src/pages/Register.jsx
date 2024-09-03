@@ -1,6 +1,7 @@
 import { Box, Button, TextField } from "@mui/material";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import useAuthCall from "../hooks/useAuthCall";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -28,6 +29,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  const { register } = useAuthCall();
   return (
     <div>
       <Formik
@@ -40,7 +42,7 @@ const Register = () => {
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          console.log(values);
+          register(values);
         }}
       >
         {({
