@@ -5,6 +5,7 @@ import {
   fetchStart,
   registerSuccess,
   loginSuccess,
+  logoutSuccess,
 } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
@@ -18,7 +19,7 @@ const useAuthCall = () => {
   // register
 
   const register = async (userInfo) => {
-    dispatch(fetchStart);
+    dispatch(fetchStart());
     try {
       const { data } = await axios.post(`${BASE_URL}users`, userInfo);
       dispatch(registerSuccess(data));
@@ -35,13 +36,13 @@ const useAuthCall = () => {
   // login
 
   const login = async (userInfo) => {
-    dispatch(fetchStart);
+    dispatch(fetchStart());
     try {
       const { data } = await axios.post(`${BASE_URL}auth/login`, userInfo);
       console.log(data);
 
-      toastSuccessNotify("You have successfully logged in!");
       dispatch(loginSuccess(data));
+      toastSuccessNotify("You have successfully logged in!");
       navigate("/dashboard");
     } catch (error) {
       toastErrorNotify(error.message);
@@ -49,7 +50,24 @@ const useAuthCall = () => {
     }
   };
 
-  return { register, login };
+  // logout
+
+  const logout = async () => {
+    dispatch(fetchStart());
+    try {
+      await axios.get(`${BASE_URL}auth/logout`);
+      dispatch(logoutSuccess());
+      toastSuccessNotify(
+        "You have successfully logged out! Hope to see you again soon."
+      );
+      navigate("/");
+    } catch (error) {
+      toastErrorNotify(error.message);
+      dispatch(fetchFail());
+    }
+  };
+
+  return { register, login, logout };
 };
 
 export default useAuthCall;
