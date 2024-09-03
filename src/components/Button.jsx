@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 const Button = ({ children, to, type, onClick }) => {
   const base =
-    "py-2.5 px-6 rounded-lg text-md font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-300";
+    "py-2.5 px-6 rounded-lg text-md font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-300 cursor-pointer";
 
   const styles = {
     primary: base,
+    small:
+      "py-1 px-6 rounded-lg text-md font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-300 cursor-pointer ",
   };
 
   if (to) {

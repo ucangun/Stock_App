@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .background {
+    @apply min-h-[100vh] bg-lime-50;
+  }
+}

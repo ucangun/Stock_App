@@ -5,7 +5,7 @@ import { Form, Formik } from "formik";
 const Login = () => {
   const { login } = useAuthCall();
   return (
-    <div>
+    <div className="py-48 background">
       <Formik
         initialValues={{
           username: "",
@@ -30,7 +30,6 @@ const Login = () => {
                 flexDirection: "column",
                 gap: 3,
                 alignItems: "center",
-                margin: 20,
               }}
             >
               <TextField

@@ -31,7 +31,7 @@ const SignupSchema = Yup.object().shape({
 const Register = () => {
   const { register } = useAuthCall();
   return (
-    <div>
+    <div className="py-36 background">
       <Formik
         initialValues={{
           username: "",
@@ -60,7 +60,6 @@ const Register = () => {
                 flexDirection: "column",
                 gap: 3,
                 alignItems: "center",
-                margin: 20,
               }}
             >
               <TextField
