@@ -112,6 +112,7 @@ const Register = () => {
                 id="password"
                 name="password"
                 label="Password"
+                type="password"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
