@@ -60,7 +60,6 @@ const useAuthCall = () => {
       toastSuccessNotify(
         "You have successfully logged out! Hope to see you again soon."
       );
-      navigate("/");
     } catch (error) {
       toastErrorNotify(error.message);
       dispatch(fetchFail());

@@ -16,6 +16,7 @@ const AppRouter = () => {
     <div>
       <BrowserRouter>
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
@@ -24,7 +25,6 @@ const AppRouter = () => {
 
           <Route element={<PrivateRouter />}>
             <Route element={<AppLayout />}>
-              <Route element={<Navigate replace to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/purchases" element={<Purchases />} />
               <Route path="/sales" element={<Sales />} />
