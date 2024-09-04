@@ -25,7 +25,7 @@ const AppRouter = () => {
 
           <Route element={<PrivateRouter />}>
             <Route element={<AppLayout />}>
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route index path="/dashboard" element={<Dashboard />} />
               <Route path="/purchases" element={<Purchases />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/firms" element={<Firms />} />

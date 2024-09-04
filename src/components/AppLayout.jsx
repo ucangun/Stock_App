@@ -7,10 +7,6 @@ const AppLayout = () => {
   return (
     <div>
       <SideBar />
-      <Navbar />
-      <main>
-        <Outlet />
-      </main>
     </div>
   );
 };
