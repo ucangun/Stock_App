@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 
-const BASE_URL = "https://19104.fullstack.clarusway.com/";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const useAuthCall = () => {
   const dispatch = useDispatch();
