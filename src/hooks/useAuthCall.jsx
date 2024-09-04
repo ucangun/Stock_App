@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchFail,
   fetchStart,
@@ -15,6 +15,7 @@ const BASE_URL = "https://19104.fullstack.clarusway.com/";
 const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { token } = useSelector((state) => state.auth);
 
   // register
 
@@ -55,7 +56,11 @@ const useAuthCall = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
-      await axios.get(`${BASE_URL}auth/logout`);
+      await axios.get(`${BASE_URL}auth/logout`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
       dispatch(logoutSuccess());
       toastSuccessNotify(
         "You have successfully logged out! Hope to see you again soon."
