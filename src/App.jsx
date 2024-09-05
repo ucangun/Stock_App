@@ -13,6 +13,12 @@ function App() {
         dark: "#00695c",
         contrastText: "#fff",
       },
+      secondary: {
+        light: "#f7fee7",
+        main: "#84cc16",
+        dark: "#4d7c0f",
+        contrastText: "#000", // Siyah renk
+      },
     },
   });
 
