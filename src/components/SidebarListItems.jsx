@@ -71,8 +71,10 @@ const SidebarListItems = () => {
 
   return (
     <>
-      <div className="bg-lime-50">
-        <Logo type="primary" />
+      <div className="flex flex-col bg-lime-50">
+        <div className="self-center pt-2">
+          <Logo type="primary" />
+        </div>
         <List>
           {links.map((item, index) => (
             <ListItem key={index} disablePadding>
