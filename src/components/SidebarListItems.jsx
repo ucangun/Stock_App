@@ -79,28 +79,30 @@ const SidebarListItems = () => {
 
   return (
     <>
-      <Logo type="primary" />
-      <List>
-        {links.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton
-              onClick={() => navigate(item.url)}
-              sx={item.url === location.pathname ? selectedStyle : btnStyle}
-            >
-              <Box
-                sx={{
-                  width: "24px",
-                  height: "24px",
-                  mr: 2,
-                  mask: `url(${item.icon}) no-repeat center / contain `,
-                  bgcolor: "primary.main",
-                }}
-              />
-              <ListItemText primary={item.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <div className="bg-lime-50">
+        <Logo type="primary" />
+        <List>
+          {links.map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton
+                onClick={() => navigate(item.url)}
+                sx={item.url === location.pathname ? selectedStyle : btnStyle}
+              >
+                <Box
+                  sx={{
+                    width: "24px",
+                    height: "24px",
+                    mr: 2,
+                    mask: `url(${item.icon}) no-repeat center / contain `,
+                    bgcolor: "primary.main",
+                  }}
+                />
+                <ListItemText primary={item.title} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </div>
     </>
   );
 };

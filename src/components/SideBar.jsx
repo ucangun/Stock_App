@@ -64,14 +64,12 @@ function SideBar(props) {
           </Typography>
           <Button type="secondary" onClick={logout}>
             Logout
-            <span>
-              <LogoutIcon
-                sx={{
-                  fontSize: 18,
-                  ml: 1,
-                }}
-              />
-            </span>
+            <LogoutIcon
+              sx={{
+                fontSize: 18,
+                ml: 1,
+              }}
+            />
           </Button>
         </Toolbar>
       </AppBar>
@@ -115,11 +113,17 @@ function SideBar(props) {
             },
           }}
           open
+          PaperProps={{
+            sx: {
+              backgroundColor: "secondary.light",
+            },
+          }}
         >
           <SidebarListItems />
         </Drawer>
         {/* Sidebar */}
       </Box>
+
       <Box
         component="main"
         sx={{
