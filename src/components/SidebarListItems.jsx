@@ -1,11 +1,7 @@
-import React from "react";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import Logo from "./Logo";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
@@ -47,9 +43,7 @@ const links = [
 
 const btnStyle = {
   color: "secondary.contrastText",
-  transition: "all 0.3s ease-in-out",
-  borderRadius: "10px",
-
+  transition: "all 0.4s ",
   "&:hover": {
     backgroundColor: "primary.light",
     color: "primary.contrastText",
@@ -61,9 +55,7 @@ const btnStyle = {
 const selectedStyle = {
   backgroundColor: "primary.main",
   color: "primary.contrastText",
-  transition: "all 0.3s ease-in-out",
-  borderRadius: "10px",
-
+  transition: "all 0.4s",
   "& .MuiBox-root": {
     backgroundColor: "primary.contrastText",
   },
