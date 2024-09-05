@@ -8,8 +8,9 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
+        teal300: "#14b8a6",
         light: "#26a69a",
-        main: "#00897b",
+        main: "#0d9488",
         dark: "#00695c",
         contrastText: "#fff",
       },
@@ -17,7 +18,7 @@ function App() {
         light: "#f7fee7",
         main: "#84cc16",
         dark: "#4d7c0f",
-        contrastText: "#000", // Siyah renk
+        contrastText: "#000",
       },
     },
   });

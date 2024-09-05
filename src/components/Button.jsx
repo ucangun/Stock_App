@@ -9,6 +9,8 @@ const Button = ({ children, to, type, onClick }) => {
     primary: base,
     small:
       "py-1 px-6 rounded-lg text-md font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-300 cursor-pointer ",
+    secondary:
+      "py-1 px-3 rounded-md text-md  text-teal-900 bg-white    cursor-pointer ml-auto ",
   };
 
   if (to) {

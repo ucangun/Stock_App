@@ -7,7 +7,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Logo from "./Logo";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 const icon = (name) => `/assets/sidebar/${name}.svg`;
@@ -45,19 +45,47 @@ const links = [
   },
 ];
 
+const btnStyle = {
+  color: "secondary.contrastText",
+  transition: "all 0.3s ease-in-out",
+  borderRadius: "10px",
+
+  "&:hover": {
+    backgroundColor: "primary.light",
+    color: "primary.contrastText",
+    "& .MuiBox-root": {
+      backgroundColor: "primary.contrastText",
+    },
+  },
+};
+const selectedStyle = {
+  backgroundColor: "primary.main",
+  color: "primary.contrastText",
+  transition: "all 0.3s ease-in-out",
+  borderRadius: "10px",
+
+  "& .MuiBox-root": {
+    backgroundColor: "primary.contrastText",
+  },
+  "&:hover": {
+    backgroundColor: "primary.light",
+    color: "primary.contrastText",
+  },
+};
+
 const SidebarListItems = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <>
-      <div>
-        <Logo type="primary" />
-      </div>
+      <Logo type="primary" />
       <List>
         {links.map((item, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton
               onClick={() => navigate(item.url)}
-              sx={{ cursor: "pointer" }}
+              sx={item.url === location.pathname ? selectedStyle : btnStyle}
             >
               <Box
                 sx={{
@@ -65,7 +93,7 @@ const SidebarListItems = () => {
                   height: "24px",
                   mr: 2,
                   mask: `url(${item.icon}) no-repeat center / contain `,
-                  bgcolor: "primary.light",
+                  bgcolor: "primary.main",
                 }}
               />
               <ListItemText primary={item.title} />

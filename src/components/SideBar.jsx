@@ -9,6 +9,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SidebarListItems from "./SidebarListItems";
 import { Outlet } from "react-router-dom";
+import useAuthCall from "../hooks/useAuthCall";
+import Button from "./Button";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const drawerWidth = 240;
 
@@ -16,6 +19,7 @@ function SideBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  const { logout } = useAuthCall();
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -58,8 +62,20 @@ function SideBar(props) {
           <Typography variant="h6" noWrap component="div">
             QuickStock
           </Typography>
+          <Button type="secondary" onClick={logout}>
+            Logout
+            <span>
+              <LogoutIcon
+                sx={{
+                  fontSize: 18,
+                  ml: 1,
+                }}
+              />
+            </span>
+          </Button>
         </Toolbar>
       </AppBar>
+
       <Box
         component="nav"
         sx={{
@@ -69,6 +85,7 @@ function SideBar(props) {
         aria-label="mailbox folders"
       >
         {/* Sidebar */}
+
         <Drawer
           container={container}
           variant="temporary"
