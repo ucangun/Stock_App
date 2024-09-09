@@ -1,14 +1,11 @@
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchFail, fetchStart, stockSuccess } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import useAxios from "./useAxios";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
 const useStockCall = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
   const axiosWithToken = useAxios();
 
   const getStockData = async (endpoint) => {
