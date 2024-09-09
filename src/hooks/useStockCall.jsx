@@ -43,7 +43,26 @@ const useStockCall = () => {
     }
   };
 
-  return { getStockData, deleteStockData };
+  const postStockData = async (endpoint, info) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios.post(`${BASE_URL}${endpoint}`, info, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      console.log(data);
+      toastSuccessNotify("The firm has been successfully created.");
+    } catch (error) {
+      toastErrorNotify("The firm could not be created.");
+      console.log(error);
+      dispatch(fetchFail());
+    } finally {
+      getStockData(endpoint);
+    }
+  };
+
+  return { getStockData, deleteStockData, postStockData };
 };
 
 export default useStockCall;

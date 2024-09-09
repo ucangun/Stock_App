@@ -7,12 +7,20 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import useStockCall from "../../hooks/useStockCall";
 
-export default function FirmCard({ _id, image, address, name, phone }) {
+export default function FirmCard({
+  _id,
+  image,
+  address,
+  name,
+  phone,
+  handleOpen,
+}) {
   const { deleteStockData } = useStockCall();
 
   return (
     <Card
       sx={{
+        height: 390,
         maxWidth: 345,
         borderRadius: "5px",
         cursor: "pointer",
@@ -58,7 +66,9 @@ export default function FirmCard({ _id, image, address, name, phone }) {
           alignSelf: "center",
         }}
       >
-        <Button size="small">Update</Button>
+        <Button size="small" onClick={handleOpen}>
+          Update
+        </Button>
         <Button size="small" onClick={() => deleteStockData("firms", _id)}>
           Delete
         </Button>
