@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { fetchFail, fetchStart, stockSuccess } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
@@ -7,6 +6,8 @@ import useAxios from "./useAxios";
 const useStockCall = () => {
   const dispatch = useDispatch();
   const axiosWithToken = useAxios();
+
+  // Get Stock Data
 
   const getStockData = async (endpoint) => {
     dispatch(fetchStart());
@@ -18,6 +19,8 @@ const useStockCall = () => {
       dispatch(fetchFail());
     }
   };
+
+  // Delete Data
 
   const deleteStockData = async (endpoint, id) => {
     dispatch(fetchStart());
@@ -33,6 +36,8 @@ const useStockCall = () => {
     }
   };
 
+  // Post Data
+
   const postStockData = async (endpoint, info) => {
     dispatch(fetchStart());
     try {
@@ -46,6 +51,8 @@ const useStockCall = () => {
       getStockData(endpoint);
     }
   };
+
+  // Put Data
 
   const putStockData = async (endpoint, info) => {
     dispatch(fetchStart());
