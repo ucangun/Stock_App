@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useStockCall from "../hooks/useStockCall";
 import { useSelector } from "react-redux";
 import { Button, Container, Grid2, Typography } from "@mui/material";
@@ -6,10 +6,25 @@ import FirmCard from "../components/Firms/FirmCard";
 import FirmModal from "../components/Firms/FirmModal";
 
 const Firms = () => {
+  const [initialState, setInitialState] = useState({
+    name: "",
+    address: "",
+    phone: "",
+    image: "",
+  });
+
   // Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setInitialState({
+      name: "",
+      address: "",
+      phone: "",
+      image: "",
+    });
+  };
 
   const { getStockData } = useStockCall();
   const { firms } = useSelector((state) => state.stock);
@@ -36,7 +51,13 @@ const Firms = () => {
       >
         Create Firm
       </Button>
-      <FirmModal open={open} handleClose={handleClose} />
+      {open && (
+        <FirmModal
+          open={open}
+          handleClose={handleClose}
+          initialState={initialState}
+        />
+      )}
 
       <Grid2
         container
@@ -57,7 +78,11 @@ const Firms = () => {
             key={firm._id}
             justifyContent="center"
           >
-            <FirmCard handleOpen={handleOpen} {...firm} />
+            <FirmCard
+              handleOpen={handleOpen}
+              {...firm}
+              setInitialState={setInitialState}
+            />
           </Grid2>
         ))}
       </Grid2>

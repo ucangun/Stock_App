@@ -14,6 +14,7 @@ export default function FirmCard({
   name,
   phone,
   handleOpen,
+  setInitialState,
 }) {
   const { deleteStockData } = useStockCall();
 
@@ -66,7 +67,13 @@ export default function FirmCard({
           alignSelf: "center",
         }}
       >
-        <Button size="small" onClick={handleOpen}>
+        <Button
+          size="small"
+          onClick={() => {
+            handleOpen();
+            setInitialState({ _id, image, address, name, phone });
+          }}
+        >
           Update
         </Button>
         <Button size="small" onClick={() => deleteStockData("firms", _id)}>

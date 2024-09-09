@@ -17,7 +17,6 @@ const useStockCall = () => {
           Authorization: `Token ${token}`,
         },
       });
-      console.log(data);
       dispatch(stockSuccess({ stock: data.data, endpoint }));
     } catch (error) {
       console.log(error);
@@ -51,7 +50,6 @@ const useStockCall = () => {
           Authorization: `Token ${token}`,
         },
       });
-      console.log(data);
       toastSuccessNotify("The firm has been successfully created.");
     } catch (error) {
       toastErrorNotify("The firm could not be created.");
@@ -62,7 +60,29 @@ const useStockCall = () => {
     }
   };
 
-  return { getStockData, deleteStockData, postStockData };
+  const putStockData = async (endpoint, info) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios.put(
+        `${BASE_URL}${endpoint}/${info._id}`,
+        info,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+      toastSuccessNotify("The firm has been successfully updated.");
+    } catch (error) {
+      toastErrorNotify("The firm could not be updated.");
+      console.log(error);
+      dispatch(fetchFail());
+    } finally {
+      getStockData(endpoint);
+    }
+  };
+
+  return { getStockData, deleteStockData, postStockData, putStockData };
 };
 
 export default useStockCall;

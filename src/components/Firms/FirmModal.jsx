@@ -16,15 +16,10 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({ open, handleClose }) {
-  const { postStockData } = useStockCall();
+export default function FirmModal({ open, handleClose, initialState }) {
+  const { postStockData, putStockData } = useStockCall();
 
-  const [firmInfo, setFirmInfo] = React.useState({
-    name: "",
-    address: "",
-    phone: "",
-    image: "",
-  });
+  const [firmInfo, setFirmInfo] = React.useState(initialState);
 
   const handleChange = (e) => {
     setFirmInfo({
@@ -35,13 +30,12 @@ export default function FirmModal({ open, handleClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postStockData("firms", firmInfo);
-    setFirmInfo({
-      name: "",
-      address: "",
-      phone: "",
-      image: "",
-    });
+    if (firmInfo._id) {
+      putStockData("firms", firmInfo);
+    } else {
+      postStockData("firms", firmInfo);
+    }
+
     handleClose();
   };
 
@@ -96,7 +90,7 @@ export default function FirmModal({ open, handleClose }) {
               type="url"
             />
             <Button type="submit" variant="contained">
-              Create Firm
+              {firmInfo._id ? "Update Firm" : "Create Firm"}
             </Button>
           </Box>
         </Box>
