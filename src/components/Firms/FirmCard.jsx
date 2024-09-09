@@ -5,8 +5,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import useStockCall from "../../hooks/useStockCall";
 
-export default function FirmCard({ image, address, name, phone }) {
+export default function FirmCard({ _id, image, address, name, phone }) {
+  const { deleteStockData } = useStockCall();
+
   return (
     <Card
       sx={{
@@ -21,7 +24,7 @@ export default function FirmCard({ image, address, name, phone }) {
         <Typography
           gutterBottom
           variant="h5"
-          component="div"
+          component="h5"
           sx={{ textAlign: "center" }}
         >
           {name}
@@ -56,7 +59,9 @@ export default function FirmCard({ image, address, name, phone }) {
         }}
       >
         <Button size="small">Update</Button>
-        <Button size="small">Delete</Button>
+        <Button size="small" onClick={() => deleteStockData("firms", _id)}>
+          Delete
+        </Button>
       </CardActions>
     </Card>
   );
