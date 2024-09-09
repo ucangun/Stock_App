@@ -22,7 +22,7 @@ export default function FirmCard({
     <Card
       sx={{
         height: 390,
-        maxWidth: 345,
+        width: 340,
         borderRadius: "5px",
         cursor: "pointer",
         display: "flex",
