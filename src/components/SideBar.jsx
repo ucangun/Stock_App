@@ -37,7 +37,13 @@ function SideBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", backgroundColor: "secondary.main" }}>
+    <Box
+      sx={{
+        display: "flex",
+        backgroundColor: "secondary.main",
+        minHeight: "100vh",
+      }}
+    >
       <CssBaseline />
       <AppBar
         position="fixed"

@@ -2,21 +2,19 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFail, fetchStart, stockSuccess } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+import useAxios from "./useAxios";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const useStockCall = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
+  const axiosWithToken = useAxios();
 
   const getStockData = async (endpoint) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios(`${BASE_URL}${endpoint}`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
+      const { data } = await axiosWithToken.get(endpoint);
       dispatch(stockSuccess({ stock: data.data, endpoint }));
     } catch (error) {
       console.log(error);
@@ -27,11 +25,7 @@ const useStockCall = () => {
   const deleteStockData = async (endpoint, id) => {
     dispatch(fetchStart());
     try {
-      await axios.delete(`${BASE_URL}${endpoint}/${id}`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
+      await axiosWithToken.delete(`${endpoint}/${id}`);
       toastSuccessNotify("The firm has been successfully deleted.");
     } catch (error) {
       console.log(error);
@@ -45,11 +39,7 @@ const useStockCall = () => {
   const postStockData = async (endpoint, info) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.post(`${BASE_URL}${endpoint}`, info, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
+      await axiosWithToken.post(endpoint, info);
       toastSuccessNotify("The firm has been successfully created.");
     } catch (error) {
       toastErrorNotify("The firm could not be created.");
@@ -63,15 +53,7 @@ const useStockCall = () => {
   const putStockData = async (endpoint, info) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.put(
-        `${BASE_URL}${endpoint}/${info._id}`,
-        info,
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
+      await axiosWithToken.put(`${endpoint}/${info._id}`, info);
       toastSuccessNotify("The firm has been successfully updated.");
     } catch (error) {
       toastErrorNotify("The firm could not be updated.");
