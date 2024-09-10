@@ -8,8 +8,11 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import useStockCall from "../../hooks/useStockCall";
 
 export default function BrandCard({ _id, image, name }) {
+  const { deleteStockData } = useStockCall();
+
   return (
     <Card
       sx={{
@@ -49,7 +52,7 @@ export default function BrandCard({ _id, image, name }) {
           <IconButton>
             <EditIcon />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => deleteStockData("brands", _id)}>
             <DeleteIcon />
           </IconButton>
         </Box>

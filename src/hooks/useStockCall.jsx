@@ -26,10 +26,10 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.delete(`${endpoint}/${id}`);
-      toastSuccessNotify("The firm has been successfully deleted.");
+      toastSuccessNotify(`The ${endpoint} has been successfully deleted.`);
     } catch (error) {
       console.log(error);
-      toastErrorNotify("The firm could not be deleted.");
+      toastErrorNotify(`The ${endpoint} could not be deleted.`);
       dispatch(fetchFail());
     } finally {
       getStockData(endpoint);
@@ -42,9 +42,9 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(endpoint, info);
-      toastSuccessNotify("The firm has been successfully created.");
+      toastSuccessNotify(`The ${endpoint} has been successfully created.`);
     } catch (error) {
-      toastErrorNotify("The firm could not be created.");
+      toastErrorNotify(`The ${endpoint} could not be created.`);
       console.log(error);
       dispatch(fetchFail());
     } finally {
@@ -58,9 +58,9 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`${endpoint}/${info._id}`, info);
-      toastSuccessNotify("The firm has been successfully updated.");
+      toastSuccessNotify(`The ${endpoint} has been successfully updated.`);
     } catch (error) {
-      toastErrorNotify("The firm could not be updated.");
+      toastErrorNotify(`The ${endpoint} could not be updated.`);
       console.log(error);
       dispatch(fetchFail());
     } finally {
