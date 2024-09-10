@@ -9,10 +9,21 @@ const Brands = () => {
   const { getStockData } = useStockCall();
   const { brands } = useSelector((state) => state.stock);
 
+  const [initialState, setInitialState] = useState({
+    name: "",
+    image: "",
+  });
+
   // Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setInitialState({
+      name: "",
+      image: "",
+    });
+  };
 
   useEffect(() => {
     getStockData("brands");
@@ -25,7 +36,6 @@ const Brands = () => {
         marginTop: "1rem",
         display: "flex",
         flexDirection: "column",
-        gap: 2,
       }}
     >
       <Button
@@ -37,10 +47,17 @@ const Brands = () => {
       >
         Create Brand
       </Button>
-      <BrandModal open={open} handleClose={handleClose} />
+      {open && (
+        <BrandModal
+          open={open}
+          handleClose={handleClose}
+          initialState={initialState}
+        />
+      )}
       <Grid2
         container
         spacing={2}
+        mt={4}
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -49,7 +66,11 @@ const Brands = () => {
       >
         {brands.map((brand) => (
           <Grid2 xs={12} md={6} lg={4} xl={3} key={brand._id}>
-            <BrandCard {...brand} />
+            <BrandCard
+              {...brand}
+              handleOpen={handleOpen}
+              setInitialState={setInitialState}
+            />
           </Grid2>
         ))}
       </Grid2>

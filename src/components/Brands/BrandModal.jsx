@@ -16,13 +16,10 @@ const style = {
   p: 4,
 };
 
-export default function BrandModal({ open, handleClose }) {
+export default function BrandModal({ open, handleClose, initialState }) {
   const { postStockData, putStockData } = useStockCall();
 
-  const [brandInfo, setBrandInfo] = React.useState({
-    name: "",
-    image: "",
-  });
+  const [brandInfo, setBrandInfo] = React.useState(initialState);
 
   const handleChange = (e) => {
     setBrandInfo({ ...brandInfo, [e.target.name]: e.target.value });
@@ -30,11 +27,12 @@ export default function BrandModal({ open, handleClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postStockData("brands", brandInfo);
-    setBrandInfo({
-      name: "",
-      image: "",
-    });
+    if (brandInfo._id) {
+      putStockData("brands", brandInfo);
+    } else {
+      postStockData("brands", brandInfo);
+    }
+
     handleClose();
   };
 
@@ -74,7 +72,7 @@ export default function BrandModal({ open, handleClose }) {
             />
 
             <Button type="submit" variant="contained">
-              Create Brand
+              {brandInfo._id ? "Update Brand" : "Create Brand"}
             </Button>
           </Box>
         </Box>
