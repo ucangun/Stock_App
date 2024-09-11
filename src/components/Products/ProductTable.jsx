@@ -14,9 +14,11 @@ function getRowId(row) {
   return row._id;
 }
 
-export default function ProductTable() {
+export default function ProductTable({ handleOpen, setInitialState }) {
   const { deleteStockData } = useStockCall();
   const { products } = useSelector((state) => state.stock);
+
+  const { _id, categoryId, brandId, name } = products;
 
   const columns = [
     {
@@ -75,7 +77,18 @@ export default function ProductTable() {
             onClick={() => deleteStockData("products", params.id)}
             sx={iconStyle}
           />
-          <EditIcon sx={iconStyle} />
+          <EditIcon
+            sx={iconStyle}
+            onClick={() => {
+              handleOpen();
+              setInitialState({
+                _id: params.row._id,
+                name: params.row.name,
+                categoryId: params.row.categoryId,
+                brandId: params.row.brandId,
+              });
+            }}
+          />
         </Box>
       ),
     },

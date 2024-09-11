@@ -2,16 +2,15 @@ import { Button, Container } from "@mui/material";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import FirmModal from "../components/Firms/FirmModal";
 import useStockCall from "../hooks/useStockCall";
 import ProductTable from "../components/Products/ProductTable";
+import ProductModal from "../components/Products/ProductModal";
 
 const Products = () => {
   const [initialState, setInitialState] = useState({
     name: "",
-    address: "",
-    phone: "",
-    image: "",
+    categoryId: "",
+    brandId: "",
   });
 
   // Modal
@@ -21,16 +20,18 @@ const Products = () => {
     setOpen(false);
     setInitialState({
       name: "",
-      address: "",
-      phone: "",
-      image: "",
+      categoryId: "",
+      brandId: "",
     });
   };
 
   const { getStockData } = useStockCall();
+  const { products } = useSelector((state) => state.stock);
 
   useEffect(() => {
     getStockData("products");
+    getStockData("categories");
+    getStockData("brands");
   }, []);
 
   return (
@@ -52,10 +53,10 @@ const Products = () => {
         Create Products
       </Button>
 
-      <ProductTable />
+      <ProductTable handleOpen={handleOpen} setInitialState={setInitialState} />
 
       {open && (
-        <FirmModal
+        <ProductModal
           open={open}
           handleClose={handleClose}
           initialState={initialState}
