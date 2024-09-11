@@ -56,13 +56,17 @@ export default function BrandCard({
           }}
         >
           <IconButton
+            color="primary"
             onClick={() => {
               handleOpen(), setInitialState({ _id, name, image });
             }}
           >
             <EditIcon />
           </IconButton>
-          <IconButton onClick={() => deleteStockData("brands", _id)}>
+          <IconButton
+            color="primary"
+            onClick={() => deleteStockData("brands", _id)}
+          >
             <DeleteIcon />
           </IconButton>
         </Box>
