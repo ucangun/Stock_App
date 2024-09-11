@@ -14,13 +14,6 @@
 
 .MuiDataGrid-columnHeader {
   background-color: #fffbeb;
-  color: #333;
-  font-weight: bold;
-  text-align: center;
-}
-
-.MuiDataGrid-filler {
-  background-color: #fffbeb;
 }
 
 .MuiDataGrid-cell {

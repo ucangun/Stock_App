@@ -24,7 +24,8 @@ export default function ProductTable({ handleOpen, setInitialState }) {
     {
       field: "_id",
       headerName: "Id",
-      width: 100,
+      minWidth: 40,
+      maxWidth: 70,
       headerAlign: "center",
       headerClassName: "super-app-theme--header",
     },
@@ -32,35 +33,40 @@ export default function ProductTable({ handleOpen, setInitialState }) {
     {
       field: "categoryId",
       headerName: "Category",
-      width: 160,
+      minWidth: 150,
+      flex: 2,
       valueGetter: (value) => value?.name ?? "-NoCategory",
       headerAlign: "center",
     },
     {
       field: "brandId",
       headerName: "Brand",
-      width: 160,
+      minWidth: 150,
+      flex: 2,
       valueGetter: (value) => value?.name ?? "-NoBrand",
       headerAlign: "center",
     },
     {
       field: "name",
       headerName: "Product Name",
-      width: 180,
+      flex: 2,
+      minWidth: 150,
       headerAlign: "center",
     },
     {
       field: "quantity",
       headerName: "Quantity",
       type: "number",
-      width: 100,
+      flex: 1,
+      minWidth: 150,
       headerAlign: "center",
     },
     {
       field: "actions",
       headerName: "Actions",
       sortable: false,
-      width: 120,
+      minWidth: 60,
+
       headerAlign: "center",
 
       renderCell: (params) => (
@@ -115,7 +121,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
             },
           },
         }}
-        pageSizeOptions={[5, 10, 15, 20]}
+        pageSizeOptions={[5, 10, 20]}
         disableRowSelectionOnClick
         slots={{
           toolbar: GridToolbar,
