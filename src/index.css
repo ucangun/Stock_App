@@ -11,3 +11,18 @@
     @apply w-8 h-8 p-[0.2rem] text-lg rounded-md inline-flex justify-center items-center transition-all duration-200  hover:bg-teal-400;
   }
 }
+
+.MuiDataGrid-columnHeader {
+  background-color: #fffbeb;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.MuiDataGrid-filler {
+  background-color: #fffbeb;
+}
+
+.MuiDataGrid-cell {
+  text-align: center !important;
+}

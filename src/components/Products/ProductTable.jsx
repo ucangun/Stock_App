@@ -19,37 +19,48 @@ export default function ProductTable() {
   const { products } = useSelector((state) => state.stock);
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 100 },
+    {
+      field: "_id",
+      headerName: "Id",
+      width: 100,
+      headerAlign: "center",
+      headerClassName: "super-app-theme--header",
+    },
 
     {
       field: "categoryId",
       headerName: "Category",
       width: 160,
       valueGetter: (value) => value?.name ?? "-NoCategory",
+      headerAlign: "center",
     },
     {
       field: "brandId",
       headerName: "Brand",
       width: 160,
       valueGetter: (value) => value?.name ?? "-NoBrand",
+      headerAlign: "center",
     },
     {
       field: "name",
       headerName: "Product Name",
-      type: "number",
       width: 180,
+      headerAlign: "center",
     },
     {
       field: "quantity",
       headerName: "Quantity",
-      description: "This column has a value getter and is not sortable.",
+      type: "number",
       width: 100,
+      headerAlign: "center",
     },
     {
       field: "actions",
       headerName: "Actions",
       sortable: false,
       width: 120,
+      headerAlign: "center",
+
       renderCell: (params) => (
         <Box
           sx={{
@@ -71,9 +82,10 @@ export default function ProductTable() {
   ];
 
   return (
-    <Box sx={{ height: 400, width: "100%", mt: 4 }}>
+    <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
         sx={{
+          mt: 4,
           borderColor: "primary.main",
           cursor: "pointer",
           "& .MuiDataGrid-cell:hover": {
