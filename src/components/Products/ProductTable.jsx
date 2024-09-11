@@ -18,8 +18,6 @@ export default function ProductTable({ handleOpen, setInitialState }) {
   const { deleteStockData } = useStockCall();
   const { products } = useSelector((state) => state.stock);
 
-  const { _id, categoryId, brandId, name } = products;
-
   const columns = [
     {
       field: "_id",
@@ -79,6 +77,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
             gap: 2,
           }}
         >
+          {console.log(params)}
           <DeleteOutline
             onClick={() => deleteStockData("products", params.id)}
             sx={iconStyle}
