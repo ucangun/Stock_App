@@ -33,6 +33,7 @@ const Purchases = () => {
   // with Promise.All method get datas together
 
   useEffect(() => {
+    getStockData("purchases");
     getStockData("firms");
     getStockData("brands");
     getStockData("products");

@@ -16,7 +16,7 @@ function getRowId(row) {
 
 export default function PurchaseTable({ handleOpen, setInitialState }) {
   const { deleteStockData } = useStockCall();
-  const { products } = useSelector((state) => state.stock);
+  const { purchases } = useSelector((state) => state.stock);
 
   const columns = [
     {
@@ -30,11 +30,11 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
     },
 
     {
-      field: "categoryId",
-      headerName: "Category",
+      field: "firmId",
+      headerName: "Firm",
       minWidth: 150,
       flex: 2,
-      valueGetter: (value) => value?.name ?? "-NoCategory",
+      valueGetter: (value) => value?.name ?? "-NoFirm",
       headerAlign: "center",
     },
     {
@@ -46,15 +46,32 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
       headerAlign: "center",
     },
     {
-      field: "name",
+      field: "productId",
       headerName: "Product Name",
       flex: 2,
       minWidth: 150,
+      valueGetter: (value) => value?.name ?? "-NoBProduct",
       headerAlign: "center",
     },
     {
       field: "quantity",
       headerName: "Quantity",
+      type: "number",
+      flex: 1,
+      minWidth: 150,
+      headerAlign: "center",
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      type: "number",
+      flex: 1,
+      minWidth: 150,
+      headerAlign: "center",
+    },
+    {
+      field: "amount",
+      headerName: "Amount",
       type: "number",
       flex: 1,
       minWidth: 150,
@@ -84,9 +101,11 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
               handleOpen();
               setInitialState({
                 _id: params.row._id,
-                name: params.row.name,
-                categoryId: params.row.categoryId,
+                firmId: params.row.firmId,
                 brandId: params.row.brandId,
+                productId: params.row.productId,
+                quantity: params.row.quantity,
+                price: params.row.price,
               });
             }}
           />
@@ -112,7 +131,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
           },
         }}
         getRowId={getRowId}
-        rows={products}
+        rows={purchases}
         columns={columns}
         initialState={{
           pagination: {
