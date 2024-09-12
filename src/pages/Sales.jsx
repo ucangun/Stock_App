@@ -26,12 +26,12 @@ const Purchases = () => {
     });
   };
 
-  const { getSalesBrandPro } = useStockCall();
+  const { getSalesPageData } = useStockCall();
 
   // with Promise.All method get datas together
 
   useEffect(() => {
-    getSalesBrandPro();
+    getSalesPageData();
   }, []);
 
   return (

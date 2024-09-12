@@ -28,15 +28,12 @@ const Purchases = () => {
     });
   };
 
-  const { getStockData } = useStockCall();
+  const { getPurchasesPageData } = useStockCall();
 
   // with Promise.All method get datas together
 
   useEffect(() => {
-    getStockData("purchases");
-    getStockData("firms");
-    getStockData("brands");
-    getStockData("products");
+    getPurchasesPageData();
   }, []);
 
   return (

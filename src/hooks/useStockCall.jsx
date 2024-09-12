@@ -4,7 +4,8 @@ import {
   fetchStart,
   stockSuccess,
   getProCatBrandSuccess,
-  getSalesBrandProSuccess,
+  getPurchasesPageSuccess,
+  getSalesPageDataSuccess,
 } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import useAxios from "./useAxios";
@@ -101,7 +102,7 @@ const useStockCall = () => {
 
   // Sales Page Data
 
-  const getSalesBrandPro = async () => {
+  const getSalesPageData = async () => {
     dispatch(fetchStart());
     try {
       const [sales, products, brands] = await Promise.all([
@@ -110,8 +111,33 @@ const useStockCall = () => {
         axiosWithToken("brands"),
       ]);
       dispatch(
-        getSalesBrandProSuccess([
+        getSalesPageDataSuccess([
           sales.data.data,
+          products.data.data,
+          brands.data.data,
+        ])
+      );
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
+  // Purchases Page Data
+
+  const getPurchasesPageData = async () => {
+    dispatch(fetchStart());
+    try {
+      const [purchases, firms, products, brands] = await Promise.all([
+        axiosWithToken("purchases"),
+        axiosWithToken("firms"),
+        axiosWithToken("products"),
+        axiosWithToken("brands"),
+      ]);
+      dispatch(
+        getPurchasesPageSuccess([
+          purchases.data.data,
+          firms.data.data,
           products.data.data,
           brands.data.data,
         ])
@@ -128,7 +154,8 @@ const useStockCall = () => {
     postStockData,
     putStockData,
     getProCatBrand,
-    getSalesBrandPro,
+    getSalesPageData,
+    getPurchasesPageData,
   };
 };
 
