@@ -4,6 +4,7 @@ import {
   fetchStart,
   stockSuccess,
   getProCatBrandSuccess,
+  getSalesBrandProSuccess,
 } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import useAxios from "./useAxios";
@@ -73,8 +74,9 @@ const useStockCall = () => {
     }
   };
 
-  // Product Page Data
   // https://www.javascripttutorial.net/javascript-promise-all/
+
+  // Product Page Data
 
   const getProCatBrand = async () => {
     dispatch(fetchStart());
@@ -97,12 +99,36 @@ const useStockCall = () => {
     }
   };
 
+  // Sales Page Data
+
+  const getSalesBrandPro = async () => {
+    dispatch(fetchStart());
+    try {
+      const [sales, products, brands] = await Promise.all([
+        axiosWithToken("sales"),
+        axiosWithToken("products"),
+        axiosWithToken("brands"),
+      ]);
+      dispatch(
+        getSalesBrandProSuccess([
+          sales.data.data,
+          products.data.data,
+          brands.data.data,
+        ])
+      );
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
   return {
     getStockData,
     deleteStockData,
     postStockData,
     putStockData,
     getProCatBrand,
+    getSalesBrandPro,
   };
 };
 
