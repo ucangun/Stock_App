@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { DeleteOutline } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCall from "../../hooks/useStockCall";
+import { format } from "date-fns";
 
 const iconStyle = {
   color: "primary.main",
@@ -20,13 +21,14 @@ export default function SaleTable({ handleOpen, setInitialState }) {
 
   const columns = [
     {
-      field: "_id",
-      headerName: "Id",
+      field: "createdAt",
+      headerName: "Date",
       minWidth: 40,
-      maxWidth: 70,
+      maxWidth: 100,
       flex: 1,
       headerAlign: "center",
       headerClassName: "super-app-theme--header",
+      valueGetter: (value) => format(value, "dd/MM/yyyy"),
     },
     {
       field: "brandId",
