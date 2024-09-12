@@ -1,7 +1,6 @@
 import { Button, Container } from "@mui/material";
 import React from "react";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
 import PurchaseModal from "../components/Purchases/PurchaseModal";
 import PurchaseTable from "../components/Purchases/PurchaseTable";
@@ -24,17 +23,19 @@ const Purchases = () => {
       firmId: "",
       brandId: "",
       productId: "",
-      quantity: null,
-      price: null,
+      quantity: 0,
+      price: 0,
     });
   };
 
-  const { getProCatBrand } = useStockCall();
+  const { getStockData } = useStockCall();
 
   // with Promise.All method get datas together
 
   useEffect(() => {
-    getProCatBrand();
+    getStockData("firms");
+    getStockData("brands");
+    getStockData("products");
   }, []);
 
   return (

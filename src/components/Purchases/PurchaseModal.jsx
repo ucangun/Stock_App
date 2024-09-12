@@ -22,7 +22,7 @@ const style = {
 };
 
 export default function PurchaseModal({ open, handleClose, initialState }) {
-  const { categories, brands } = useSelector((state) => state.stock);
+  const { firms, products, brands } = useSelector((state) => state.stock);
   const { postStockData, putStockData } = useStockCall();
 
   const [purchaseInfo, setPurchaseInfo] = React.useState(initialState);
@@ -64,22 +64,22 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
             }}
           >
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-category-label">Category</InputLabel>
+              <InputLabel id="demo-simple-category-label">Firm</InputLabel>
               <Select
                 labelId="demo-simple-category-label"
-                name="categoryId"
+                name="firmId"
                 id="demo-simple-select"
                 value={
-                  purchaseInfo.categoryId
-                    ? purchaseInfo.categoryId._id || purchaseInfo.categoryId
+                  purchaseInfo.firmId
+                    ? purchaseInfo.firmId._id || purchaseInfo.firmId
                     : ""
                 }
                 label="Category"
                 onChange={handleChange}
               >
-                {categories.map((category) => (
-                  <MenuItem key={category._id} value={category._id}>
-                    {category.name}
+                {firms.map((firm) => (
+                  <MenuItem key={firm._id} value={firm._id}>
+                    {firm.name}
                   </MenuItem>
                 ))}
               </Select>
@@ -89,7 +89,7 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
               <InputLabel id="demo-simple-brand-label">Brand</InputLabel>
               <Select
                 labelId="demo-simple-brand-label"
-                name="brandId"
+                name="brandIdId"
                 id="demo-simple-select"
                 value={
                   purchaseInfo.brandId
@@ -107,13 +107,44 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
               </Select>
             </FormControl>
 
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-brand-label">Product</InputLabel>
+              <Select
+                labelId="demo-simple-brand-label"
+                name="productId"
+                id="demo-simple-select"
+                value={
+                  purchaseInfo.productId
+                    ? purchaseInfo.productId._id || purchaseInfo.productId
+                    : ""
+                }
+                label="Brand"
+                onChange={handleChange}
+              >
+                {products.map((product) => (
+                  <MenuItem key={product._id} value={product._id}>
+                    {product.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
             <TextField
-              id="name"
-              name="name"
-              value={purchaseInfo.name}
-              label="Product Name"
+              id="quantity"
+              name="quantity"
+              value={purchaseInfo.quantity}
+              label="Quantity"
               onChange={handleChange}
-              type="text"
+              type="number"
+            />
+
+            <TextField
+              id="price"
+              name="price"
+              value={purchaseInfo.price}
+              label="Product Price"
+              onChange={handleChange}
+              type="number"
             />
 
             <Button type="submit" variant="contained">
