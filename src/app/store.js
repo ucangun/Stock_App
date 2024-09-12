@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/authSlice";
 import stockReducer from "../features/stockSlice";
+import themeReducer from "../features/themeSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -24,6 +26,7 @@ const store = configureStore({
   reducer: {
     auth: persistedReducer,
     stock: stockReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
