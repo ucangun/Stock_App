@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCall from "../../hooks/useStockCall";
+import { useSelector } from "react-redux";
 
 export default function BrandCard({
   _id,
@@ -18,6 +19,7 @@ export default function BrandCard({
   setInitialState,
 }) {
   const { deleteStockData } = useStockCall();
+  const { mode } = useSelector((state) => state.theme);
 
   return (
     <Card
@@ -28,6 +30,7 @@ export default function BrandCard({
         height: 150,
         padding: "10px",
         cursor: "pointer",
+        backgroundColor: mode === "dark" ? "#ffffff" : "#ffffff",
       }}
     >
       <CardMedia

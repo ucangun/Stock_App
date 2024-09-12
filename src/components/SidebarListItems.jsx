@@ -71,7 +71,7 @@ const SidebarListItems = () => {
 
   return (
     <>
-      <div className="flex flex-col bg-lime-50">
+      <div className="flex flex-col">
         <div className="self-center pt-2">
           <Logo type="primary" />
         </div>

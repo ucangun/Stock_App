@@ -40,8 +40,8 @@ function SideBar(props) {
     <Box
       sx={{
         display: "flex",
-        backgroundColor: "secondary.main",
         minHeight: "100vh",
+        backgroundColor: "secondary.main",
       }}
     >
       <CssBaseline />
@@ -50,6 +50,7 @@ function SideBar(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          backgroundColor: "primary.main",
         }}
       >
         <Toolbar>
@@ -91,13 +92,15 @@ function SideBar(props) {
           sx={{
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
+              // boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor: "secondary.light",
             },
           }}
         >
           <SidebarListItems />
         </Drawer>
+
         <Drawer
           variant="permanent"
           sx={{
@@ -105,14 +108,10 @@ function SideBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-            },
-          }}
-          open
-          PaperProps={{
-            sx: {
               backgroundColor: "secondary.light",
             },
           }}
+          open
         >
           <SidebarListItems />
         </Drawer>

@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import useStockCall from "../../hooks/useStockCall";
+import { useSelector } from "react-redux";
 
 export default function FirmCard({
   _id,
@@ -17,6 +18,7 @@ export default function FirmCard({
   setInitialState,
 }) {
   const { deleteStockData } = useStockCall();
+  const { mode } = useSelector((state) => state.theme);
 
   return (
     <Card
@@ -27,6 +29,7 @@ export default function FirmCard({
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",
+        backgroundColor: mode === "dark" ? "#ffffff" : "#ffffff",
       }}
     >
       <CardContent>
@@ -54,10 +57,10 @@ export default function FirmCard({
           gap: 1,
         }}
       >
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ color: "secondary.contrastText" }}>
           {address}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        <Typography variant="body2" sx={{ color: "secondary.contrastText" }}>
           {phone}
         </Typography>
       </CardContent>
