@@ -50,7 +50,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
       headerName: "Product Name",
       flex: 2,
       minWidth: 150,
-      valueGetter: (value) => value?.name ?? "-NoBProduct",
+      valueGetter: (value) => value?.name ?? "-NoProduct",
       headerAlign: "center",
     },
     {
@@ -110,7 +110,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
             }}
           />
           <DeleteOutline
-            onClick={() => deleteStockData("products", params.id)}
+            onClick={() => deleteStockData("purchases", params.id)}
             sx={iconStyle}
           />
         </Box>

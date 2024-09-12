@@ -10,8 +10,8 @@ const Purchases = () => {
     firmId: "",
     brandId: "",
     productId: "",
-    quantity: null,
-    price: null,
+    quantity: "",
+    price: "",
   });
 
   // Modal
@@ -23,8 +23,8 @@ const Purchases = () => {
       firmId: "",
       brandId: "",
       productId: "",
-      quantity: 0,
-      price: 0,
+      quantity: "",
+      price: "",
     });
   };
 

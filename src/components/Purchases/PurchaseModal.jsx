@@ -89,7 +89,7 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
               <InputLabel id="demo-simple-brand-label">Brand</InputLabel>
               <Select
                 labelId="demo-simple-brand-label"
-                name="brandIdId"
+                name="brandId"
                 id="demo-simple-select"
                 value={
                   purchaseInfo.brandId
