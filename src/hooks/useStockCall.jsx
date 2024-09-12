@@ -74,6 +74,7 @@ const useStockCall = () => {
   };
 
   // Product Page Data
+  // https://www.javascripttutorial.net/javascript-promise-all/
 
   const getProCatBrand = async () => {
     dispatch(fetchStart());

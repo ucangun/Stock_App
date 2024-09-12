@@ -24,6 +24,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
       headerName: "Id",
       minWidth: 40,
       maxWidth: 70,
+      flex: 1,
       headerAlign: "center",
       headerClassName: "super-app-theme--header",
     },
@@ -64,7 +65,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
       headerName: "Actions",
       sortable: false,
       minWidth: 60,
-
+      flex: 1,
       headerAlign: "center",
 
       renderCell: (params) => (
@@ -77,11 +78,6 @@ export default function ProductTable({ handleOpen, setInitialState }) {
             gap: 2,
           }}
         >
-          {console.log(params)}
-          <DeleteOutline
-            onClick={() => deleteStockData("products", params.id)}
-            sx={iconStyle}
-          />
           <EditIcon
             sx={iconStyle}
             onClick={() => {
@@ -94,6 +90,10 @@ export default function ProductTable({ handleOpen, setInitialState }) {
               });
             }}
           />
+          <DeleteOutline
+            onClick={() => deleteStockData("products", params.id)}
+            sx={iconStyle}
+          />
         </Box>
       ),
     },
@@ -102,6 +102,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
+        autoHeight
         sx={{
           mt: 4,
           borderColor: "primary.main",
