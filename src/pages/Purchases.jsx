@@ -55,7 +55,7 @@ const Purchases = () => {
         variant="contained"
         onClick={handleOpen}
       >
-        New Purchase
+        Add New Purchase
       </Button>
 
       <PurchaseTable
