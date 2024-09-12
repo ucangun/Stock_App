@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "../assets/images/logo.png";
-import Button from "./Button";
-import Logo from "./Logo";
+import Button from "../Button";
+import Logo from "../Logo";
 
 const Navbar = () => {
   return (

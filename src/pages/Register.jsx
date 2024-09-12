@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import useAuthCall from "../hooks/useAuthCall";
-import RegisterForm from "../components/RegisterForm";
+import RegisterForm from "../components/Forms/RegisterForm";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()

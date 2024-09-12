@@ -1,7 +1,7 @@
 import React from "react";
 import hero from "../assets/images/hero.jpg";
 import Button from "../components/Button";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Home/Navbar";
 
 const Home = () => {
   return (

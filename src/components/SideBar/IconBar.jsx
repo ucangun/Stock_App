@@ -1,11 +1,11 @@
 import React from "react";
-import useAuthCall from "../hooks/useAuthCall";
+import useAuthCall from "../../hooks/useAuthCall";
 import { FaUser } from "react-icons/fa6";
 import { MdLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "../features/themeSlice";
+import { toggleTheme } from "../../features/themeSlice";
 
 const IconBar = () => {
   const { mode } = useSelector((state) => state.theme);

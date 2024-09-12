@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import AppRouter from "./router/AppRouter";
 import { Provider, useSelector } from "react-redux";
 import store from "./app/store";
