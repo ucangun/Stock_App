@@ -10,11 +10,11 @@ const Home = () => {
         <Navbar />
         <div className="py-6 ">
           <div className="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
-            <h1 className="max-w-2xl mx-auto mb-5 text-3xl font-semibold leading-10 text-center text-gray-800 md:text-5xl ">
+            <h1 className="max-w-2xl mx-auto mb-5 text-3xl font-semibold leading-10 text-center text-gray-800 md:text-5xl dark:text-slate-200 ">
               Simplify Your Company's Stock Management with Powerful Analytics
               and Visuals
             </h1>
-            <p className="max-w-sm mx-auto text-base font-normal leading-7 text-center text-gray-500 mb-9">
+            <p className="max-w-sm mx-auto text-base font-normal leading-7 text-center text-gray-500 dark:text-gray-300 mb-9">
               Effortlessly manage your company's inventory and track stock
               levels with real-time insights, detailed reports, and intuitive
               visualizations.

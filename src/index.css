@@ -4,10 +4,10 @@
 
 @layer components {
   .background {
-    @apply min-h-[100vh] bg-lime-50;
+    @apply min-h-[100vh] bg-lime-50 dark:bg-slate-700;
   }
 
   .icons {
-    @apply w-8 h-8 p-[0.2rem] text-lg rounded-md inline-flex justify-center items-center transition-all duration-200  hover:bg-teal-400;
+    @apply w-8 h-8 p-[0.2rem] text-lg rounded-md inline-flex justify-center items-center transition-all duration-200 hover:bg-teal-400 dark:hover:bg-slate-500;
   }
 }
