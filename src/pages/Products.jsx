@@ -25,13 +25,13 @@ const Products = () => {
     });
   };
 
-  const { getStockData } = useStockCall();
+  const { getProCatBrand } = useStockCall();
   const { products } = useSelector((state) => state.stock);
 
+  // with Promise.All method get datas together
+
   useEffect(() => {
-    getStockData("products");
-    getStockData("categories");
-    getStockData("brands");
+    getProCatBrand();
   }, []);
 
   return (
