@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import useStockCall from "../hooks/useStockCall";
 import KpiCards from "../components/Dashboard/KpiCards";
+import Charts from "../components/Dashboard/Charts";
 
 const Dashboard = () => {
   const { getDashboardPageData } = useStockCall();
@@ -12,6 +13,7 @@ const Dashboard = () => {
   return (
     <div>
       <KpiCards />
+      <Charts />
     </div>
   );
 };
