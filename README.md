@@ -1,5 +1,7 @@
 # 📦 QuickStock - Stock Management App
 
+https://quickstock.vercel.app/
+
 **QuickStock** is a comprehensive stock management application designed to efficiently manage and track purchases, sales, firms, brands, and products. With a user-friendly dashboard, it allows users to perform CRUD operations on various resources such as firms, brands, and products. The app ensures smooth backend communication with custom hooks and leverages multiple libraries and technologies to deliver a seamless user experience.
 
 ## 🌟 Project Purpose
