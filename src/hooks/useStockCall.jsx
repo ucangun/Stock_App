@@ -6,6 +6,7 @@ import {
   getProCatBrandSuccess,
   getPurchasesPageSuccess,
   getSalesPageDataSuccess,
+  getDashboardPageSuccess,
 } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import useAxios from "./useAxios";
@@ -148,6 +149,22 @@ const useStockCall = () => {
     }
   };
 
+  // Dashboard Page Data
+
+  const getDashboardPageData = async () => {
+    dispatch(fetchStart());
+    try {
+      const [purchases, sales] = await Promise.all([
+        axiosWithToken("purchases"),
+        axiosWithToken("sales"),
+      ]);
+      dispatch(getDashboardPageSuccess([purchases.data.data, sales.data.data]));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
   return {
     getStockData,
     deleteStockData,
@@ -156,6 +173,7 @@ const useStockCall = () => {
     getProCatBrand,
     getSalesPageData,
     getPurchasesPageData,
+    getDashboardPageData,
   };
 };
 
