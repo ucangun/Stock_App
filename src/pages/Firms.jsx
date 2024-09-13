@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useStockCall from "../hooks/useStockCall";
 import { useSelector } from "react-redux";
-import { Button, Container, Grid2, Typography } from "@mui/material";
+import { Button, Container, Grid2 } from "@mui/material";
 import FirmCard from "../components/Firms/FirmCard";
 import FirmModal from "../components/Firms/FirmModal";
 

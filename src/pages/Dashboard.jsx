@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useStockCall from "../hooks/useStockCall";
 import KpiCards from "../components/Dashboard/KpiCards";
 import Charts from "../components/Dashboard/Charts";
+import { Container } from "@mui/material";
 
 const Dashboard = () => {
   const { getDashboardPageData } = useStockCall();
@@ -11,10 +12,10 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
+    <Container maxWidth={"xl"}>
       <KpiCards />
       <Charts />
-    </div>
+    </Container>
   );
 };
 
