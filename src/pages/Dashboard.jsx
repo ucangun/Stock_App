@@ -12,7 +12,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <Container maxWidth={"xl"}>
+    <Container maxWidth="xl" sx={{ padding: "2rem" }}>
       <KpiCards />
       <Charts />
     </Container>
