@@ -63,6 +63,9 @@ QuickStock aims to streamline stock management by offering a dashboard that feat
 │    │       ├── 📂 Brands
 │    │       │        ├── BrandCard.jsx
 │    │       │        └── BrandModal.jsx
+│    │       ├── 📂 Dashboard
+│    │       │        ├── Charts.jsx
+│    │       │        └── KpiCards.jsx
 │    │       ├── 📂 Firms
 │    │       │        ├── FirmCard.jsx
 │    │       │        └── FirmModal.jsx
