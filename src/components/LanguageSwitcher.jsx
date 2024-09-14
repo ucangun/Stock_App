@@ -3,24 +3,17 @@ import { useTranslation } from "react-i18next";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-  const [isChecked, setIsChecked] = useState(false);
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "en"
+  );
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("language");
-    if (savedLanguage) {
-      i18n.changeLanguage(savedLanguage);
-      setIsChecked(true);
-    } else {
-      i18n.changeLanguage("en");
-      localStorage.setItem("language", "en");
-      setIsChecked(true);
-    }
-  }, []);
-
-  const handleLanguageChange = (language) => {
     i18n.changeLanguage(language);
-    localStorage.setItem("language", language);
-    setIsChecked(!isChecked);
+  }, [language, i18n]);
+
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem("language", lang);
   };
 
   return (
@@ -29,7 +22,7 @@ const LanguageSwitcher = () => {
         <span
           onClick={() => handleLanguageChange("en")}
           className={`flex h-6 w-6 text-[12px] items-center justify-center rounded cursor-pointer ${
-            isChecked
+            language === "en"
               ? "text-white bg-teal-600 dark:bg-slate-950"
               : "text-gray-800"
           }`}
@@ -39,7 +32,7 @@ const LanguageSwitcher = () => {
         <span
           onClick={() => handleLanguageChange("de")}
           className={`flex h-6 w-6 text-[12px] items-center justify-center rounded cursor-pointer ${
-            !isChecked
+            language === "de"
               ? "text-white bg-teal-600 dark:bg-slate-950"
               : "text-gray-800"
           }`}
