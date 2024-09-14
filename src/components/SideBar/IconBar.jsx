@@ -6,6 +6,7 @@ import { MdDarkMode } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../features/themeSlice";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 const IconBar = () => {
   const { mode } = useSelector((state) => state.theme);
@@ -13,6 +14,9 @@ const IconBar = () => {
   const dispatch = useDispatch();
 
   const icons = [
+    {
+      icon: <LanguageSwitcher />,
+    },
     {
       icon: <FaUser />,
     },
@@ -27,9 +31,13 @@ const IconBar = () => {
   ];
 
   return (
-    <div className="flex gap-2 ml-auto cursor-pointer ">
+    <div className="flex items-center gap-2 ml-auto cursor-pointer ">
       {icons.map((item, index) => (
-        <div key={index} className="icons" onClick={item.onClick}>
+        <div
+          key={index}
+          className={index !== 0 ? "icons" : ""}
+          onClick={item.onClick}
+        >
           {item.icon}
         </div>
       ))}

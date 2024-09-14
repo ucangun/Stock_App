@@ -66,6 +66,7 @@ function SideBar(props) {
           <Typography variant="h6" noWrap component="div">
             QuickStock
           </Typography>
+
           <IconBar />
         </Toolbar>
       </AppBar>
