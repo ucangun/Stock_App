@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -34,7 +35,25 @@ const selectedStyle = {
 };
 
 const SidebarListItems = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setLoading(false);
+    };
+
+    i18n.on("languageChanged", handleLanguageChange);
+
+    // Dil değiştirildiğinde ilk render'ı beklemek için timeout
+    setTimeout(() => {
+      setLoading(false);
+    }, 100);
+
+    return () => {
+      i18n.off("languageChanged", handleLanguageChange);
+    };
+  }, [i18n]);
 
   const links = [
     {
@@ -71,6 +90,10 @@ const SidebarListItems = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
