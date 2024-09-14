@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import logoDark from "../assets/images/logoDark.png";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Logo = ({ type }) => {
   const { mode } = useSelector((state) => state.theme);
