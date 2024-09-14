@@ -10,11 +10,24 @@ const Logo = ({ type }) => {
     secondary: "h-[12rem] sm:h-[16rem]  w-auto mx-auto object-cover",
   };
 
+  useEffect(() => {
+    const preloadImage = (src) => {
+      const img = new Image();
+      img.src = src;
+    };
+    preloadImage(logo);
+    preloadImage(logoDark);
+  }, []);
+
   const logoSrc = mode === "dark" ? logoDark : logo;
 
   return (
     <Link>
-      <img src={logoSrc} alt="logo" className={styles[type]} />
+      <img
+        src={logoSrc}
+        alt="logo"
+        className={`${styles[type]} logo-transition`}
+      />
     </Link>
   );
 };
