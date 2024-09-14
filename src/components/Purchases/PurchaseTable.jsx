@@ -6,6 +6,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCall from "../../hooks/useStockCall";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 const iconStyle = {
   color: "primary.main",
@@ -18,11 +19,12 @@ function getRowId(row) {
 export default function PurchaseTable({ handleOpen, setInitialState }) {
   const { deleteStockData } = useStockCall();
   const { purchases } = useSelector((state) => state.stock);
+  const { t } = useTranslation();
 
   const columns = [
     {
       field: "createdAt",
-      headerName: "Date",
+      headerName: t("tableDate"),
       minWidth: 80,
       maxWidth: 100,
       flex: 1,
@@ -33,7 +35,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
 
     {
       field: "firmId",
-      headerName: "Firm",
+      headerName: t("tableFirm"),
       minWidth: 120,
       flex: 1,
       valueGetter: (value) => value?.name ?? "-NoFirm",
@@ -41,7 +43,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
     },
     {
       field: "brandId",
-      headerName: "Brand",
+      headerName: t("tableBrand"),
       minWidth: 140,
       flex: 2,
       valueGetter: (value) => value?.name ?? "-NoBrand",
@@ -49,7 +51,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
     },
     {
       field: "productId",
-      headerName: "Product Name",
+      headerName: t("tableProductName"),
       flex: 2,
       minWidth: 140,
       valueGetter: (value) => value?.name ?? "-NoProduct",
@@ -57,7 +59,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
     },
     {
       field: "quantity",
-      headerName: "Quantity",
+      headerName: t("tableQuantity"),
       type: "number",
       flex: 0.7,
       minWidth: 120,
@@ -65,7 +67,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
     },
     {
       field: "price",
-      headerName: "Price",
+      headerName: t("tablePrice"),
       type: "number",
       flex: 0.7,
       minWidth: 120,
@@ -73,7 +75,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
     },
     {
       field: "amount",
-      headerName: "Amount",
+      headerName: t("tableAmount"),
       type: "number",
       flex: 0.7,
       minWidth: 120,
@@ -81,7 +83,7 @@ export default function PurchaseTable({ handleOpen, setInitialState }) {
     },
     {
       field: "actions",
-      headerName: "Actions",
+      headerName: t("tableActions"),
       sortable: false,
       minWidth: 60,
       flex: 1,

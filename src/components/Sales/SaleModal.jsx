@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import { Button, TextField } from "@mui/material";
 import useStockCall from "../../hooks/useStockCall";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -22,6 +23,8 @@ const style = {
 };
 
 export default function SaleModal({ open, handleClose, initialState }) {
+  const { t } = useTranslation();
+
   const { products, brands } = useSelector((state) => state.stock);
   const { postStockData, putStockData } = useStockCall();
 
@@ -64,7 +67,10 @@ export default function SaleModal({ open, handleClose, initialState }) {
             }}
           >
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-brand-label">Brand</InputLabel>
+              <InputLabel id="demo-simple-brand-label">
+                {" "}
+                {t("labelBrand")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-brand-label"
                 name="brandId"
@@ -86,7 +92,10 @@ export default function SaleModal({ open, handleClose, initialState }) {
             </FormControl>
 
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-brand-label">Product</InputLabel>
+              <InputLabel id="demo-simple-brand-label">
+                {" "}
+                {t("labelProduct")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-brand-label"
                 name="productId"
@@ -111,7 +120,7 @@ export default function SaleModal({ open, handleClose, initialState }) {
               id="quantity"
               name="quantity"
               value={saleInfo.quantity}
-              label="Quantity"
+              label={t("labelQuantity")}
               onChange={handleChange}
               type="number"
             />
@@ -120,13 +129,13 @@ export default function SaleModal({ open, handleClose, initialState }) {
               id="price"
               name="price"
               value={saleInfo.price}
-              label="Product Price"
+              label={t("labelProductPrice")}
               onChange={handleChange}
               type="number"
             />
 
             <Button type="submit" variant="contained">
-              {saleInfo._id ? "Update Sale" : "Add New Sale"}
+              {saleInfo._id ? t("updateSale") : t("addNewSale")}
             </Button>
           </Box>
         </Box>

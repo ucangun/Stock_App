@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import { Button, Container, Grid2 } from "@mui/material";
 import FirmCard from "../components/Firms/FirmCard";
 import FirmModal from "../components/Firms/FirmModal";
+import { useTranslation } from "react-i18next";
 
 const Firms = () => {
+  const { t } = useTranslation();
   const [initialState, setInitialState] = useState({
     name: "",
     address: "",
@@ -49,7 +51,7 @@ const Firms = () => {
         variant="contained"
         onClick={handleOpen}
       >
-        Create Firm
+        {t("createFirm")}
       </Button>
       {open && (
         <FirmModal

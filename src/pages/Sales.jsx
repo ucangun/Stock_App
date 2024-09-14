@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import useStockCall from "../hooks/useStockCall";
 import SaleModal from "../components/Sales/SaleModal";
 import SaleTable from "../components/Sales/SaleTable";
+import { useTranslation } from "react-i18next";
 
-const Purchases = () => {
+const Sales = () => {
+  const { t } = useTranslation();
   const [initialState, setInitialState] = useState({
     brandId: "",
     productId: "",
@@ -50,7 +52,7 @@ const Purchases = () => {
         variant="contained"
         onClick={handleOpen}
       >
-        Add New Sale
+        {t("addNewSale")}
       </Button>
 
       <SaleTable handleOpen={handleOpen} setInitialState={setInitialState} />
@@ -66,4 +68,4 @@ const Purchases = () => {
   );
 };
 
-export default Purchases;
+export default Sales;

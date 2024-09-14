@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import { Button, TextField } from "@mui/material";
 import useStockCall from "../../hooks/useStockCall";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -22,6 +23,7 @@ const style = {
 };
 
 export default function ProductModal({ open, handleClose, initialState }) {
+  const { t } = useTranslation();
   const { categories, brands } = useSelector((state) => state.stock);
   const { postStockData, putStockData } = useStockCall();
 
@@ -64,7 +66,9 @@ export default function ProductModal({ open, handleClose, initialState }) {
             }}
           >
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-category-label">Category</InputLabel>
+              <InputLabel id="demo-simple-category-label">
+                {t("labelCategory")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-category-label"
                 name="categoryId"
@@ -86,7 +90,10 @@ export default function ProductModal({ open, handleClose, initialState }) {
             </FormControl>
 
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-brand-label">Brand</InputLabel>
+              <InputLabel id="demo-simple-brand-label">
+                {" "}
+                {t("labelBrand")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-brand-label"
                 name="brandId"
@@ -111,13 +118,13 @@ export default function ProductModal({ open, handleClose, initialState }) {
               id="name"
               name="name"
               value={productInfo.name}
-              label="Product Name"
+              label={t("labelProductName")}
               onChange={handleChange}
               type="text"
             />
 
             <Button type="submit" variant="contained">
-              {productInfo._id ? "Update Product" : "Create Product"}
+              {productInfo._id ? t("updateProduct") : t("createProduct")}
             </Button>
           </Box>
         </Box>

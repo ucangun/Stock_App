@@ -1,13 +1,15 @@
 // 'use client';
-
 import { Card } from "@tremor/react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function KpiCards() {
+  const { t } = useTranslation();
+
   const { sales, purchases } = useSelector((state) => state.stock);
 
   const totalSales = sales.reduce((acc, sale) => acc + sale.amount, 0);
@@ -21,17 +23,17 @@ export default function KpiCards() {
 
   const data = [
     {
-      name: "Sales",
+      name: t("totalSales"),
       value: `€ ${totalSales}`,
       color: "emerald",
     },
     {
-      name: "Cash",
+      name: t("totalCash"),
       value: `€ ${totalCash}`,
       color: "indigo",
     },
     {
-      name: "Purchases",
+      name: t("totalPurchases"),
       value: `€ ${totalPurchases}`,
       color: "rose",
     },

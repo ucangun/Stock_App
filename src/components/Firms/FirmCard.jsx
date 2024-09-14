@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import useStockCall from "../../hooks/useStockCall";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 export default function FirmCard({
   _id,
@@ -19,6 +20,7 @@ export default function FirmCard({
 }) {
   const { deleteStockData } = useStockCall();
   const { mode } = useSelector((state) => state.theme);
+  const { t } = useTranslation();
 
   return (
     <Card
@@ -77,10 +79,10 @@ export default function FirmCard({
             setInitialState({ _id, image, address, name, phone });
           }}
         >
-          Update
+          {t("buttonUpdate")}
         </Button>
         <Button size="small" onClick={() => deleteStockData("firms", _id)}>
-          Delete
+          {t("buttonDelete")}
         </Button>
       </CardActions>
     </Card>

@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Button, TextField } from "@mui/material";
 import useStockCall from "../../hooks/useStockCall";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -17,6 +18,8 @@ const style = {
 };
 
 export default function FirmModal({ open, handleClose, initialState }) {
+  const { t } = useTranslation();
+
   const { postStockData, putStockData } = useStockCall();
 
   const [firmInfo, setFirmInfo] = React.useState(initialState);
@@ -61,7 +64,7 @@ export default function FirmModal({ open, handleClose, initialState }) {
               id="name"
               name="name"
               value={firmInfo.name}
-              label="Firm Name"
+              label={t("labelFirmName")}
               onChange={handleChange}
               type="text"
             />
@@ -69,7 +72,7 @@ export default function FirmModal({ open, handleClose, initialState }) {
               id="address"
               name="address"
               value={firmInfo.address}
-              label="Firm Address"
+              label={t("labelFirmAddress")}
               onChange={handleChange}
               type="text"
             />
@@ -77,7 +80,7 @@ export default function FirmModal({ open, handleClose, initialState }) {
               id="phone"
               name="phone"
               value={firmInfo.phone}
-              label="Phone Number"
+              label={t("labelPhoneNumber")}
               onChange={handleChange}
               type="text"
             />
@@ -85,12 +88,12 @@ export default function FirmModal({ open, handleClose, initialState }) {
               id="image"
               name="image"
               value={firmInfo.image}
-              label="Firm Image"
+              label={t("labelFirmImage")}
               onChange={handleChange}
               type="url"
             />
             <Button type="submit" variant="contained">
-              {firmInfo._id ? "Update Firm" : "Create Firm"}
+              {firmInfo._id ? t("updateFirm") : t("createFirm")}
             </Button>
           </Box>
         </Box>

@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import { Button, Container, Grid2 } from "@mui/material";
 import BrandCard from "../components/Brands/BrandCard";
 import BrandModal from "../components/Brands/BrandModal";
+import { useTranslation } from "react-i18next";
 
 const Brands = () => {
+  const { t } = useTranslation();
   const { getStockData } = useStockCall();
   const { brands } = useSelector((state) => state.stock);
 
@@ -45,7 +47,7 @@ const Brands = () => {
         variant="contained"
         onClick={handleOpen}
       >
-        Create Brand
+        {t("createBrand")}
       </Button>
       {open && (
         <BrandModal

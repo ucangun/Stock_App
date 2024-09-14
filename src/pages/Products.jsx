@@ -1,12 +1,13 @@
 import { Button, Container } from "@mui/material";
 import React from "react";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import useStockCall from "../hooks/useStockCall";
 import ProductTable from "../components/Products/ProductTable";
 import ProductModal from "../components/Products/ProductModal";
+import { useTranslation } from "react-i18next";
 
 const Products = () => {
+  const { t } = useTranslation();
   const [initialState, setInitialState] = useState({
     name: "",
     categoryId: "",
@@ -49,7 +50,7 @@ const Products = () => {
         variant="contained"
         onClick={handleOpen}
       >
-        Create Products
+        {t("createProduct")}
       </Button>
 
       <ProductTable handleOpen={handleOpen} setInitialState={setInitialState} />

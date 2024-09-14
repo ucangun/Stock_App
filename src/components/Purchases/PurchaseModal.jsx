@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import { Button, TextField } from "@mui/material";
 import useStockCall from "../../hooks/useStockCall";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -26,6 +27,8 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
   const { postStockData, putStockData } = useStockCall();
 
   const [purchaseInfo, setPurchaseInfo] = React.useState(initialState);
+
+  const { t } = useTranslation();
 
   const handleChange = (e) => {
     setPurchaseInfo({
@@ -64,7 +67,9 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
             }}
           >
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-category-label">Firm</InputLabel>
+              <InputLabel id="demo-simple-category-label">
+                {t("labelFirm")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-category-label"
                 name="firmId"
@@ -86,7 +91,10 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
             </FormControl>
 
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-brand-label">Brand</InputLabel>
+              <InputLabel id="demo-simple-brand-label">
+                {" "}
+                {t("labelBrand")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-brand-label"
                 name="brandId"
@@ -108,7 +116,10 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
             </FormControl>
 
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-brand-label">Product</InputLabel>
+              <InputLabel id="demo-simple-brand-label">
+                {" "}
+                {t("labelProduct")}
+              </InputLabel>
               <Select
                 labelId="demo-simple-brand-label"
                 name="productId"
@@ -133,7 +144,7 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
               id="quantity"
               name="quantity"
               value={purchaseInfo.quantity}
-              label="Quantity"
+              label={t("labelQuantity")}
               onChange={handleChange}
               type="number"
             />
@@ -142,13 +153,13 @@ export default function PurchaseModal({ open, handleClose, initialState }) {
               id="price"
               name="price"
               value={purchaseInfo.price}
-              label="Product Price"
+              label={t("labelProductPrice")}
               onChange={handleChange}
               type="number"
             />
 
             <Button type="submit" variant="contained">
-              {purchaseInfo._id ? "Update Purchase" : "Add New Purchase"}
+              {purchaseInfo._id ? t("updatePurchase") : t("addNewPurchase")}
             </Button>
           </Box>
         </Box>

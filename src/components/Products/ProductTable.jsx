@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { DeleteOutline } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCall from "../../hooks/useStockCall";
+import { useTranslation } from "react-i18next";
 
 const iconStyle = {
   color: "primary.main",
@@ -17,11 +18,12 @@ function getRowId(row) {
 export default function ProductTable({ handleOpen, setInitialState }) {
   const { deleteStockData } = useStockCall();
   const { products } = useSelector((state) => state.stock);
+  const { t } = useTranslation();
 
   const columns = [
     {
       field: "_id",
-      headerName: "Id",
+      headerName: t("tableId"),
       minWidth: 40,
       maxWidth: 70,
       flex: 1,
@@ -31,7 +33,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
 
     {
       field: "categoryId",
-      headerName: "Category",
+      headerName: t("tableDate"),
       minWidth: 150,
       flex: 2,
       valueGetter: (value) => value?.name ?? "-NoCategory",
@@ -39,7 +41,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
     },
     {
       field: "brandId",
-      headerName: "Brand",
+      headerName: t("tableBrand"),
       minWidth: 150,
       flex: 2,
       valueGetter: (value) => value?.name ?? "-NoBrand",
@@ -47,14 +49,14 @@ export default function ProductTable({ handleOpen, setInitialState }) {
     },
     {
       field: "name",
-      headerName: "Product Name",
+      headerName: t("tableProductName"),
       flex: 2,
       minWidth: 150,
       headerAlign: "center",
     },
     {
       field: "quantity",
-      headerName: "Quantity",
+      headerName: t("tableQuantity"),
       type: "number",
       flex: 1,
       minWidth: 150,
@@ -62,7 +64,7 @@ export default function ProductTable({ handleOpen, setInitialState }) {
     },
     {
       field: "actions",
-      headerName: "Actions",
+      headerName: t("tableActions"),
       sortable: false,
       minWidth: 60,
       flex: 1,

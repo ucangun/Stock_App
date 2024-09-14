@@ -5,41 +5,9 @@ import ListItemText from "@mui/material/ListItemText";
 import Logo from "../Logo";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const icon = (name) => `/assets/sidebar/${name}.svg`;
-
-const links = [
-  {
-    title: "Dashboard",
-    url: "/dashboard",
-    icon: icon("chart-icon"),
-  },
-  {
-    title: "Purchases",
-    url: "/purchases",
-    icon: icon("add-to-cart-icon"),
-  },
-  {
-    title: "Sales",
-    url: "/sales",
-    icon: icon("delete-cart-item-icon"),
-  },
-  {
-    title: "Firms",
-    url: "/firms",
-    icon: icon("company-enterprise-icon"),
-  },
-  {
-    title: "Brands",
-    url: "/brands",
-    icon: icon("tags-line-icon"),
-  },
-  {
-    title: "Products",
-    url: "/products",
-    icon: icon("fmcg-products-icon"),
-  },
-];
 
 const btnStyle = {
   color: "secondary.contrastText",
@@ -66,6 +34,41 @@ const selectedStyle = {
 };
 
 const SidebarListItems = () => {
+  const { t } = useTranslation();
+
+  const links = [
+    {
+      title: t("dashboard"),
+      url: "/dashboard",
+      icon: icon("chart-icon"),
+    },
+    {
+      title: t("purchases"),
+      url: "/purchases",
+      icon: icon("add-to-cart-icon"),
+    },
+    {
+      title: t("sales"),
+      url: "/sales",
+      icon: icon("delete-cart-item-icon"),
+    },
+    {
+      title: t("firms"),
+      url: "/firms",
+      icon: icon("company-enterprise-icon"),
+    },
+    {
+      title: t("brands"),
+      url: "/brands",
+      icon: icon("tags-line-icon"),
+    },
+    {
+      title: t("products"),
+      url: "/products",
+      icon: icon("fmcg-products-icon"),
+    },
+  ];
+
   const navigate = useNavigate();
   const location = useLocation();
 

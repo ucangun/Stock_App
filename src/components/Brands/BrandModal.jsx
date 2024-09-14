@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Button, TextField } from "@mui/material";
 import useStockCall from "../../hooks/useStockCall";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -17,6 +18,7 @@ const style = {
 };
 
 export default function BrandModal({ open, handleClose, initialState }) {
+  const { t } = useTranslation();
   const { postStockData, putStockData } = useStockCall();
 
   const [brandInfo, setBrandInfo] = React.useState(initialState);
@@ -57,7 +59,7 @@ export default function BrandModal({ open, handleClose, initialState }) {
             <TextField
               id="name"
               name="name"
-              label="Brand Name"
+              label={t("labelBrandName")}
               type="text"
               value={brandInfo.name}
               onChange={handleChange}
@@ -65,14 +67,14 @@ export default function BrandModal({ open, handleClose, initialState }) {
             <TextField
               id="image"
               name="image"
-              label="Brand Image"
+              label={t("labelBrandImage")}
               type="url"
               value={brandInfo.image}
               onChange={handleChange}
             />
 
             <Button type="submit" variant="contained">
-              {brandInfo._id ? "Update Brand" : "Create Brand"}
+              {brandInfo._id ? t("updateBrand") : t("createBrand")}
             </Button>
           </Box>
         </Box>
