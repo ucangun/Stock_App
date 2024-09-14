@@ -55,6 +55,13 @@ const resources = {
       labelBrandName: "Brand Name",
       labelBrandImage: "Brand Image",
       labelProductName: "Product Name",
+      //Home
+      homeTitle:
+        "Simplify Your Company's Stock Management with Powerful Analytics and Visuals",
+      homeDescription:
+        "Effortlessly manage your company's inventory and track stock levels with real-time insights, detailed reports, and intuitive visualizations.",
+      createAccount: "Create your account",
+      login: "Login",
     },
   },
   de: {
@@ -103,7 +110,7 @@ const resources = {
       labelProduct: "Produkt",
       labelQuantity: "Menge",
       labelCategory: "Kategorie",
-      labelProductPrice: "Produkt Preis",
+      labelProductPrice: "Produktpreis",
       labelFirmName: "Firmenname",
       labelFirmAddress: "Firmenadresse",
       labelPhoneNumber: "Telefonnummer",
@@ -111,6 +118,13 @@ const resources = {
       labelBrandName: "Markenname",
       labelBrandImage: "Markenfoto",
       labelProductName: "Produktname",
+      //Home
+      homeTitle:
+        "Vereinfachen Sie die Lagerverwaltung Ihres Unternehmens mit leistungsstarken Analysen und Visualisierungen",
+      homeDescription:
+        "Verwalten Sie mühelos den Lagerbestand Ihres Unternehmens und verfolgen Sie die Bestandsmengen mit Echtzeit-Einblicken, detaillierten Berichten und intuitiven Visualisierungen.",
+      createAccount: "Erstellen Sie Ihr Konto",
+      login: "Anmelden",
     },
   },
 };
