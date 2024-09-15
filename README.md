@@ -12,6 +12,10 @@ QuickStock aims to streamline stock management by offering a dashboard that feat
 - List, view, and interact with data efficiently through the UI.
 - Perform bulk operations such as importing and exporting stock data.
 
+## 🎬 Outcome
+
+![QuickStock](https://github.com/user-attachments/assets/7c7ccc0c-564b-4025-a090-212e50fb5158)
+
 ## 🛠️ Technologies Used
 
 - **ReactJS**: Main framework for building the user interface and component structure.
