@@ -36,7 +36,7 @@ const resources = {
       // Charts
       chartSale: "sale",
       chartPurchase: "purchase",
-      //Modals
+      // Modals
       updatePurchase: "Update Purchase",
       updateSale: "Update Sale",
       updateFirm: "Update Firm",
@@ -55,13 +55,22 @@ const resources = {
       labelBrandName: "Brand Name",
       labelBrandImage: "Brand Image",
       labelProductName: "Product Name",
-      //Home
+      // Home
       homeTitle:
         "Simplify Your Company's Stock Management with Powerful Analytics and Visuals",
       homeDescription:
         "Effortlessly manage your company's inventory and track stock levels with real-time insights, detailed reports, and intuitive visualizations.",
       createAccount: "Create your account",
       login: "Login",
+      // Toast
+      sucRegister:
+        "You have successfully registered! Thank you for joining us.",
+      sucLogin: "You have successfully logged in!",
+      sucLogout:
+        "You have successfully logged out! Hope to see you again soon.",
+      errRegister: "Registration failed! Please try again.",
+      errLogin: "Login failed! Please check your credentials and try again.",
+      errLogout: "Logout failed! Please try again.",
     },
   },
   de: {
@@ -91,7 +100,6 @@ const resources = {
       addNewPurchase: "Neuen Einkauf hinzufügen",
       buttonUpdate: "Aktualisieren",
       buttonDelete: "Löschen",
-
       // Kpi Cards
       totalSales: "Verkäufe",
       totalCash: "Bargeld",
@@ -99,7 +107,7 @@ const resources = {
       // Charts
       chartSale: "Verkauf",
       chartPurchase: "Einkauf",
-      //Modals
+      // Modals
       updatePurchase: "Einkauf aktualisieren",
       updateSale: "Verkauf aktualisieren",
       updateFirm: "Firma aktualisieren",
@@ -118,13 +126,25 @@ const resources = {
       labelBrandName: "Markenname",
       labelBrandImage: "Markenfoto",
       labelProductName: "Produktname",
-      //Home
+      // Home
       homeTitle:
         "Vereinfachen Sie die Lagerverwaltung Ihres Unternehmens mit leistungsstarken Analysen und Visualisierungen",
       homeDescription:
         "Verwalten Sie mühelos den Lagerbestand Ihres Unternehmens und verfolgen Sie die Bestandsmengen mit Echtzeit-Einblicken, detaillierten Berichten und intuitiven Visualisierungen.",
       createAccount: "Erstellen Sie Ihr Konto",
       login: "Anmelden",
+      // Toast
+      sucRegister:
+        "Sie haben sich erfolgreich registriert! Vielen Dank, dass Sie sich uns angeschlossen haben.",
+      sucLogin: "Sie haben sich erfolgreich eingeloggt!",
+      sucLogout:
+        "Sie haben sich erfolgreich abgemeldet! Hoffentlich sehen wir uns bald wieder.",
+
+      errRegister:
+        "Registrierung fehlgeschlagen! Bitte versuchen Sie es erneut.",
+      errLogin:
+        "Anmeldung fehlgeschlagen! Bitte überprüfen Sie Ihre Anmeldedaten und versuchen Sie es erneut.",
+      errLogout: "Abmeldung fehlgeschlagen! Bitte versuchen Sie es erneut.",
     },
   },
 };

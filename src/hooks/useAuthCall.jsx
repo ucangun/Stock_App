@@ -9,6 +9,7 @@ import {
 } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+import { useTranslation } from "react-i18next";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -16,6 +17,7 @@ const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
+  const { t } = useTranslation();
 
   // register
 
@@ -24,12 +26,10 @@ const useAuthCall = () => {
     try {
       const { data } = await axios.post(`${BASE_URL}users`, userInfo);
       dispatch(registerSuccess(data));
-      toastSuccessNotify(
-        "You have successfully registered! Thank you for joining us."
-      );
+      toastSuccessNotify(t("sucRegister"));
       navigate("/login");
     } catch (error) {
-      toastErrorNotify(error.message);
+      toastErrorNotify(t("errRegister"));
       dispatch(fetchFail());
     }
   };
@@ -41,10 +41,10 @@ const useAuthCall = () => {
     try {
       const { data } = await axios.post(`${BASE_URL}auth/login`, userInfo);
       dispatch(loginSuccess(data));
-      toastSuccessNotify("You have successfully logged in!");
+      toastSuccessNotify(t("sucLogin"));
       navigate("/dashboard");
     } catch (error) {
-      toastErrorNotify(error.message);
+      toastErrorNotify(t("errLogin"));
       dispatch(fetchFail());
     }
   };
@@ -60,11 +60,9 @@ const useAuthCall = () => {
         },
       });
       dispatch(logoutSuccess());
-      toastSuccessNotify(
-        "You have successfully logged out! Hope to see you again soon."
-      );
+      toastSuccessNotify(t("sucLogout"));
     } catch (error) {
-      toastErrorNotify(error.message);
+      toastErrorNotify(t("errLogout"));
       dispatch(fetchFail());
     }
   };
