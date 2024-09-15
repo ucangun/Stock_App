@@ -29,6 +29,7 @@ const resources = {
       addNewPurchase: "Add New Purchase",
       buttonUpdate: "Update",
       buttonDelete: "Delete",
+      register: "Register",
       // Kpi Cards
       totalSales: "Sales",
       totalCash: "Cash",
@@ -102,6 +103,7 @@ const resources = {
       addNewPurchase: "Neuen Einkauf hinzufügen",
       buttonUpdate: "Aktualisieren",
       buttonDelete: "Löschen",
+      register: "Registrieren",
       // Kpi Cards
       totalSales: "Verkäufe",
       totalCash: "Bargeld",
@@ -130,9 +132,9 @@ const resources = {
       labelProductName: "Produktname",
       // Home
       homeTitle:
-        "Vereinfachen Sie die Lagerverwaltung Ihres Unternehmens mit leistungsstarken Analysen und Visualisierungen",
+        "Vereinfachen Sie Ihre Lagerverwaltung mit Analysen und Visualisierungen.",
       homeDescription:
-        "Verwalten Sie mühelos den Lagerbestand Ihres Unternehmens und verfolgen Sie die Bestandsmengen mit Echtzeit-Einblicken, detaillierten Berichten und intuitiven Visualisierungen.",
+        "Verwalten Sie den Lagerbestand Ihres Unternehmens mit Echtzeit-Einblicken und intuitiven Visualisierungen.",
       createAccount: "Erstellen Sie Ihr Konto",
       login: "Anmelden",
       // Toast

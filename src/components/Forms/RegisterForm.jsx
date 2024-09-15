@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { Form } from "formik";
+import { useTranslation } from "react-i18next";
 
 const RegisterForm = ({
   values,
@@ -9,6 +10,7 @@ const RegisterForm = ({
   handleChange,
   handleBlur,
 }) => {
+  const { t } = useTranslation();
   return (
     <Form>
       <Box
@@ -77,7 +79,7 @@ const RegisterForm = ({
           sx={{ width: "30ch" }}
         />
         <Button type="submit" variant="contained">
-          Sign Up
+          {t("register")}
         </Button>
       </Box>
     </Form>

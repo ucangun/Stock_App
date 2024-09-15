@@ -1,9 +1,10 @@
 import React from "react";
 import { Box, Button, TextField } from "@mui/material";
-
 import { Form } from "formik";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
+  const { t } = useTranslation();
   return (
     <Form>
       <Box
@@ -38,7 +39,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           sx={{ width: "30ch" }}
         />
         <Button type="submit" variant="contained">
-          Login
+          {t("login")}
         </Button>
       </Box>
     </Form>
