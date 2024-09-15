@@ -10,10 +10,12 @@ import {
 } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import useAxios from "./useAxios";
+import { useTranslation } from "react-i18next";
 
 const useStockCall = () => {
   const dispatch = useDispatch();
   const axiosWithToken = useAxios();
+  const { t } = useTranslation();
 
   // Get Stock Data
 
@@ -34,10 +36,10 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.delete(`${endpoint}/${id}`);
-      toastSuccessNotify(`The ${endpoint} has been successfully deleted.`);
+      toastSuccessNotify(t("successMessage"));
     } catch (error) {
       console.log(error);
-      toastErrorNotify(`The ${endpoint} could not be deleted.`);
+      toastErrorNotify(t("errorMessage"));
       dispatch(fetchFail());
     } finally {
       getStockData(endpoint);
@@ -50,9 +52,9 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(endpoint, info);
-      toastSuccessNotify(`The ${endpoint} has been successfully created.`);
+      toastSuccessNotify(t("successMessage"));
     } catch (error) {
-      toastErrorNotify(`The ${endpoint} could not be created.`);
+      toastErrorNotify(t("errorMessage"));
       console.log(error);
       dispatch(fetchFail());
     } finally {
@@ -66,9 +68,9 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`${endpoint}/${info._id}`, info);
-      toastSuccessNotify(`The ${endpoint} has been successfully updated.`);
+      toastSuccessNotify(t("successMessage"));
     } catch (error) {
-      toastErrorNotify(`The ${endpoint} could not be updated.`);
+      toastErrorNotify(t("errorMessage"));
       console.log(error);
       dispatch(fetchFail());
     } finally {

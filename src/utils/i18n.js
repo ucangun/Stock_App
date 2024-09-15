@@ -71,6 +71,8 @@ const resources = {
       errRegister: "Registration failed! Please try again.",
       errLogin: "Login failed! Please check your credentials and try again.",
       errLogout: "Logout failed! Please try again.",
+      successMessage: "Operation was successful.",
+      errorMessage: "Operation failed.",
     },
   },
   de: {
@@ -145,6 +147,8 @@ const resources = {
       errLogin:
         "Anmeldung fehlgeschlagen! Bitte überprüfen Sie Ihre Anmeldedaten und versuchen Sie es erneut.",
       errLogout: "Abmeldung fehlgeschlagen! Bitte versuchen Sie es erneut.",
+      successMessage: "Der Vorgang war erfolgreich.",
+      errorMessage: "Der Vorgang ist fehlgeschlagen.",
     },
   },
 };
