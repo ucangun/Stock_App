@@ -18,7 +18,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
         <TextField
           id="username"
           name="username"
-          label="Username"
+          label={t("userName")}
           value={values.username}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -29,7 +29,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
         <TextField
           id="password"
           name="password"
-          label="Password"
+          label={t("password")}
           type="password"
           value={values.password}
           onChange={handleChange}

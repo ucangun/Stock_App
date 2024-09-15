@@ -74,6 +74,12 @@ const resources = {
       errLogout: "Logout failed! Please try again.",
       successMessage: "Operation was successful.",
       errorMessage: "Operation failed.",
+      // Forms
+      userName: "Username",
+      password: "Password",
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "E-Mail",
     },
   },
   de: {
@@ -151,6 +157,12 @@ const resources = {
       errLogout: "Abmeldung fehlgeschlagen! Bitte versuchen Sie es erneut.",
       successMessage: "Der Vorgang war erfolgreich.",
       errorMessage: "Der Vorgang ist fehlgeschlagen.",
+      // Forms
+      userName: "Benutzername",
+      password: "Passwort",
+      firstName: "Vorname",
+      lastName: "Nachname",
+      email: "E-Mail",
     },
   },
 };

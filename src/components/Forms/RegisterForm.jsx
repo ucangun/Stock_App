@@ -24,7 +24,7 @@ const RegisterForm = ({
         <TextField
           id="username"
           name="username"
-          label="Username"
+          label={t("userName")}
           value={values.username}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -36,7 +36,7 @@ const RegisterForm = ({
         <TextField
           id="firstName"
           name="firstName"
-          label="First Name"
+          label={t("firstName")}
           value={values.firstName}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -47,7 +47,7 @@ const RegisterForm = ({
         <TextField
           id="lastName"
           name="lastName"
-          label="Last Name"
+          label={t("lastName")}
           value={values.lastName}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -58,7 +58,7 @@ const RegisterForm = ({
         <TextField
           id="email"
           name="email"
-          label="Email"
+          label={t("email")}
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -69,7 +69,7 @@ const RegisterForm = ({
         <TextField
           id="password"
           name="password"
-          label="Password"
+          label={t("password")}
           type="password"
           value={values.password}
           onChange={handleChange}
