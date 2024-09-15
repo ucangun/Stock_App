@@ -30,7 +30,7 @@ QuickStock aims to streamline stock management by offering a dashboard that feat
 - **Formik & Yup**: Used for handling form validation and submission in the login, register, and other forms, ensuring robust form control.
 - **React Icons & MUI Icons**: For incorporating icons throughout the app to enhance the user experience.
 - **Dark Mode**: Implemented with `Redux Toolkit` and Material UI’s theme system, allowing users to toggle between light and dark modes.
-- **Postman**: Used for testing and verifying backend API endpoints during development.
+- **Postman**: Used for testing and verifying backend API endpoints during development. -**i18n**: Implemented internationalization with language options for German (de) and English (en), allowing users to seamlessly switch between these languages.
 
 ## ⚙️ Features
 
@@ -89,6 +89,7 @@ QuickStock aims to streamline stock management by offering a dashboard that feat
 │    │       │        └── SidebarListItems.jsx
 │    │       ├── AppLayout.jsx
 │    │       ├── Button.jsx
+│    │       ├── LanguageSwitcher.jsx
 │    │       └── Logo.jsx
 │    │
 │    │
@@ -116,10 +117,12 @@ QuickStock aims to streamline stock management by offering a dashboard that feat
 │    │       ├── Register.jsx
 │    │       └── Sales.jsx
 │    │
-│    ├── 📂router
+│    ├── 📂 router
 │    │       ├── AppRouter.jsx
 │    │       └── PrivateRouter.jsx
 │    │
+│    ├── 📂 utils
+│    │       └── i18n.js
 │    │
 │    ├── App.jsx
 │    ├── index.css
