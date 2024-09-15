@@ -167,15 +167,14 @@ const resources = {
   },
 };
 
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
-  .init({
-    resources,
-    lng: "de",
+i18n.use(initReactI18next).init({
+  resources,
+  lng: localStorage.getItem("language") || "en",
+  fallbackLng: "en",
 
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 export default i18n;

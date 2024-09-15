@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import Logo from "../Logo";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Box } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 const icon = (name) => `/assets/sidebar/${name}.svg`;
@@ -45,7 +47,6 @@ const SidebarListItems = () => {
 
     i18n.on("languageChanged", handleLanguageChange);
 
-    // Dil değiştirildiğinde ilk render'ı beklemek için timeout
     setTimeout(() => {
       setLoading(false);
     }, 100);
