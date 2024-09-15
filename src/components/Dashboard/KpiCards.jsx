@@ -3,9 +3,12 @@ import { Card } from "@tremor/react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+const formatCurrency = (value) => {
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "EUR",
+  }).format(value);
+};
 
 export default function KpiCards() {
   const { t } = useTranslation();
@@ -13,28 +16,26 @@ export default function KpiCards() {
   const { sales, purchases } = useSelector((state) => state.stock);
 
   const totalSales = sales.reduce((acc, sale) => acc + sale.amount, 0);
-
   const totalPurchases = purchases.reduce(
     (acc, purchase) => acc + purchase.amount,
     0
   );
-
   const totalCash = totalSales - totalPurchases;
 
   const data = [
     {
       name: t("totalSales"),
-      value: `€ ${totalSales}`,
+      value: formatCurrency(totalSales),
       color: "emerald",
     },
     {
       name: t("totalCash"),
-      value: `€ ${totalCash}`,
+      value: formatCurrency(totalCash),
       color: "indigo",
     },
     {
       name: t("totalPurchases"),
-      value: `€ ${totalPurchases}`,
+      value: formatCurrency(totalPurchases),
       color: "rose",
     },
   ];
