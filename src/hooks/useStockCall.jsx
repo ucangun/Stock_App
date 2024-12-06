@@ -8,80 +8,66 @@ import {
   getSalesPageDataSuccess,
   getDashboardPageSuccess,
 } from "../features/stockSlice";
-import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import useAxios from "./useAxios";
 import { useTranslation } from "react-i18next";
+import { handleError } from "../helpers/handleError";
 
 const useStockCall = () => {
   const dispatch = useDispatch();
   const axiosWithToken = useAxios();
   const { t } = useTranslation();
 
-  // Get Stock Data
-
+  // Stock Data Fetch
   const getStockData = async (endpoint) => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken.get(endpoint);
       dispatch(stockSuccess({ stock: data.data, endpoint }));
     } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     }
   };
 
   // Delete Data
-
   const deleteStockData = async (endpoint, id) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.delete(`${endpoint}/${id}`);
       toastSuccessNotify(t("successMessage"));
     } catch (error) {
-      console.log(error);
-      toastErrorNotify(t("errorMessage"));
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     } finally {
       getStockData(endpoint);
     }
   };
 
   // Post Data
-
   const postStockData = async (endpoint, info) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(endpoint, info);
       toastSuccessNotify(t("successMessage"));
     } catch (error) {
-      toastErrorNotify(t("errorMessage"));
-      console.log(error);
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     } finally {
       getStockData(endpoint);
     }
   };
 
   // Put Data
-
   const putStockData = async (endpoint, info) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`${endpoint}/${info._id}`, info);
       toastSuccessNotify(t("successMessage"));
     } catch (error) {
-      toastErrorNotify(t("errorMessage"));
-      console.log(error);
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     } finally {
       getStockData(endpoint);
     }
   };
 
-  // https://www.javascripttutorial.net/javascript-promise-all/
-
   // Product Page Data
-
   const getProCatBrand = async () => {
     dispatch(fetchStart());
     try {
@@ -98,13 +84,11 @@ const useStockCall = () => {
         ])
       );
     } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     }
   };
 
   // Sales Page Data
-
   const getSalesPageData = async () => {
     dispatch(fetchStart());
     try {
@@ -121,13 +105,11 @@ const useStockCall = () => {
         ])
       );
     } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     }
   };
 
   // Purchases Page Data
-
   const getPurchasesPageData = async () => {
     dispatch(fetchStart());
     try {
@@ -146,13 +128,11 @@ const useStockCall = () => {
         ])
       );
     } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     }
   };
 
   // Dashboard Page Data
-
   const getDashboardPageData = async () => {
     dispatch(fetchStart());
     try {
@@ -162,8 +142,7 @@ const useStockCall = () => {
       ]);
       dispatch(getDashboardPageSuccess([purchases.data.data, sales.data.data]));
     } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
+      handleError(error, dispatch, fetchFail, t("errorMessage"));
     }
   };
 

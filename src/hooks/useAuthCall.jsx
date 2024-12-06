@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import { useTranslation } from "react-i18next";
+import { handleError } from "../helpers/handleError";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -19,8 +20,7 @@ const useAuthCall = () => {
   const { token } = useSelector((state) => state.auth);
   const { t } = useTranslation();
 
-  // register
-
+  // Register
   const register = async (userInfo) => {
     dispatch(fetchStart());
     try {
@@ -29,13 +29,11 @@ const useAuthCall = () => {
       toastSuccessNotify(t("sucRegister"));
       navigate("/login");
     } catch (error) {
-      toastErrorNotify(t("errRegister"));
-      dispatch(fetchFail());
+      handleError(error, "errRegister");
     }
   };
 
-  // login
-
+  // Login
   const login = async (userInfo) => {
     dispatch(fetchStart());
     try {
@@ -44,14 +42,11 @@ const useAuthCall = () => {
       toastSuccessNotify(t("sucLogin"));
       navigate("/dashboard");
     } catch (error) {
-      const errorMessage = error.response?.data?.message || t("errLogin");
-      toastErrorNotify(errorMessage);
-      dispatch(fetchFail());
+      handleError(error, "errLogin");
     }
   };
 
-  // logout
-
+  // Logout
   const logout = async () => {
     dispatch(fetchStart());
     try {
@@ -63,8 +58,7 @@ const useAuthCall = () => {
       dispatch(logoutSuccess());
       toastSuccessNotify(t("sucLogout"));
     } catch (error) {
-      toastErrorNotify(t("errLogout"));
-      dispatch(fetchFail());
+      handleError(error, "errLogout");
     }
   };
 
