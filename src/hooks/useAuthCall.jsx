@@ -44,7 +44,8 @@ const useAuthCall = () => {
       toastSuccessNotify(t("sucLogin"));
       navigate("/dashboard");
     } catch (error) {
-      toastErrorNotify(t("errLogin"));
+      const errorMessage = error.response?.data?.message || t("errLogin");
+      toastErrorNotify(errorMessage);
       dispatch(fetchFail());
     }
   };
