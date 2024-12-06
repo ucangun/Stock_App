@@ -8,7 +8,7 @@ const dataFormatter = (number) =>
 
 export default function Charts() {
   const { sales, purchases } = useSelector((state) => state.stock);
-  console.log(sales);
+  // console.log(sales);
 
   const salesData = sales.map((sale) => ({
     date: format(sale.createdAt, "dd/MM/yyyy HH:mm"),
